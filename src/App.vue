@@ -4,37 +4,51 @@ const tasks = [
   {
     name: "Website design",
     description: "Define the style guide, branding and create the webdesign on Figma.",
-    completed: true
+    completed: true,
+    status: "Active",
+    priorityStatus: "high priority"
   },
   {
     name: "Website development",
     description: "Develop the portfolio website using Vue JS.",
-    completed: false
+    completed: false,
+    status: "Active",
+    priorityStatus: "med priority"
   },
   {
     name: "Hosting and infrastructure",
     description: "Define hosting, domain and infrastructure for the portfolio website.",
-    completed: false
+    completed: false,
+    status: "Active",
+    priorityStatus: "Low priority"
   },
   {
     name: "Composition API",
     description: "Learn how to use the composition API and how it compares to the options API.",
-    completed: true
+    completed: true,
+    status: "Inactive",
+    priorityStatus: "med priority"
   },
   {
     name: "Pinia",
     description: "Learn how to setup a store using Pinia.",
-    completed: true
+    completed: true,
+    status: "Active",
+    priorityStatus: "med priority"
   },
   {
     name: "Groceries",
     description: "Buy rice, apples and potatos.",
-    completed: false
+    completed: false,
+    status: "Active",
+    priorityStatus: "med priority"
   },
   {
     name: "Bank account",
     description: "Open a bank account for my freelance business.",
-    completed: false
+    completed: false,
+    status: "Active",
+    priorityStatus: "med priority"
   }
 ];
 
