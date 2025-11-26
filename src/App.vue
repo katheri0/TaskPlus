@@ -7,14 +7,14 @@ const tasks = reactive([
     description: "Define the style guide, branding and create the webdesign on Figma.",
     completed: true,
     status: "Active",
-    priorityStatus: "high priority"
+    priorityStatus: "High priority"
   },
   {
     name: "Website development",
     description: "Develop the portfolio website using Vue JS.",
     completed: false,
     status: "Active",
-    priorityStatus: "med priority"
+    priorityStatus: "Med priority"
   },
   {
     name: "Hosting and infrastructure",
@@ -28,30 +28,45 @@ const tasks = reactive([
     description: "Learn how to use the composition API and how it compares to the options API.",
     completed: true,
     status: "Inactive",
-    priorityStatus: "med priority"
+    priorityStatus: "Med priority"
   },
   {
     name: "Pinia",
     description: "Learn how to setup a store using Pinia.",
     completed: true,
     status: "Active",
-    priorityStatus: "med priority"
+    priorityStatus: "Med priority"
   },
   {
     name: "Groceries",
     description: "Buy rice, apples and potatos.",
     completed: false,
     status: "Active",
-    priorityStatus: "med priority"
+    priorityStatus: "Med priority"
   },
   {
     name: "Bank account",
     description: "Open a bank account for my freelance business.",
     completed: false,
     status: "Active",
-    priorityStatus: "med priority"
+    priorityStatus: "Med priority"
   }
 ]);
+
+  // ---------- Helpers ----------
+  function getStatusClassPriority(statusText) {
+    if (statusText === 'High priority') return 'High-priority'
+    if (statusText === 'Med priority') return 'Med-priority'
+    if (statusText === 'Low priority') return 'Low-priority'
+
+    return ''
+  }
+    function getStatusClass(statusText) {
+    if (statusText === 'Active') return 'Active'
+    if (statusText === 'Inactive') return 'Inactive'
+
+    return ''
+  }
 
 </script>
 
@@ -89,8 +104,8 @@ const tasks = reactive([
         <h3>
           <span>{{ task.name }}</span>
           <span>
-            <span class="project-statusAD"><b>active</b></span>
-            <span class="project-statusPriority"><b>high priority</b></span>
+            <span :class="getStatusClass(task.status)"><b>{{ task.status }}</b></span>
+            <span :class="getStatusClassPriority(task.priorityStatus)"><b>{{ task.priorityStatus }}</b></span>
           </span>
         </h3>
 
@@ -123,7 +138,36 @@ const tasks = reactive([
 
 
 <style scoped>
-.project-statusAD b {
+.High-priority
+{
+  background-color: #D6D5FF;
+  color: #403DFF;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  display: inline-block;
+}
+.Med-priority
+{
+  background-color: #FFF4C8;
+  color: #FFC23D;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  display: inline-block;
+}
+.Low-priority
+{
+    background-color: #FFD5D5;
+  color: #FF3D3D;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  display: inline-block;
+
+}
+.Active
+{
   background-color: #d5ffd8;
   color: #3dff4a;
   padding: 4px 10px;
@@ -131,21 +175,39 @@ const tasks = reactive([
   font-size: 14px;
   display: inline-block;
 }
-
-.project-statusPriority b {
-  background-color: #d6d5ff;
-  color: #403dff;
+.Inactive
+{
+  background-color: #FFD5D5;
+  color: #FF3D3D;
   padding: 4px 10px;
   border-radius: 10px;
   font-size: 14px;
   display: inline-block;
 }
 
-span span
-{
-  padding: 10px;
+/* .project-statusAD b {
+  background-color: #d5ffd8;
+  color: #3dff4a;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  display: inline-block;
+} */
+
+/* .project-statusPriority b {
+  background-color: #d6d5ff;
+  color: #403dff;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  display: inline-block;
+} */
+
+span span {
+  padding: 5px;
 
 }
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -233,19 +295,22 @@ span span
   display: flex;
   justify-content: space-between;
   align-items: center;
-  white-space: nowrap;  /* prevent title and statuses from wrapping */
+  white-space: nowrap;
   gap: 10px;
 }
-.task h3 > span:first-child {
+
+.task h3>span:first-child {
   overflow: hidden;
-  text-overflow: ellipsis;  /* hides long titles with "..." */
+  text-overflow: ellipsis;
 }
-.task h3 > span:last-child {
+
+.task h3>span:last-child {
   display: flex;
   gap: 6px;
-  white-space: nowrap;  /* statuses stay on one line */
-  flex-shrink: 0;  /* prevents status group from shrinking */
+  white-space: nowrap;
+  flex-shrink: 0;
 }
+
 .task p {
   margin-top: 24px;
   margin-bottom: 12px;
