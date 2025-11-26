@@ -112,6 +112,10 @@ const tasks = reactive([
         <p>
           {{ task.description }}
         </p>
+          <span>
+            <button class="Delete-btn"><b>Delete</b></button>
+            <button class="Edit-btn"><b>Edit</b></button>
+          </span>
         <div class="task-check">
           <input type="checkbox" :checked="task.completed" />
           <label>
@@ -138,6 +142,28 @@ const tasks = reactive([
 
 
 <style scoped>
+ .Edit-btn  {
+  background-color: #D6D5FF;
+  color: #2F60C4;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  display: inline-block;
+  border: 2px solid #2F60C4;
+} 
+
+.Delete-btn {
+  background-color: #FFD5D5;
+  color: #FF3D3D;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  display: inline-block;
+  border: 2px solid #FF3D3D;
+  margin: 3px;
+
+} 
+
 .High-priority
 {
   background-color: #D6D5FF;
@@ -158,7 +184,7 @@ const tasks = reactive([
 }
 .Low-priority
 {
-    background-color: #FFD5D5;
+  background-color: #FFD5D5;
   color: #FF3D3D;
   padding: 4px 10px;
   border-radius: 10px;
@@ -184,24 +210,6 @@ const tasks = reactive([
   font-size: 14px;
   display: inline-block;
 }
-
-/* .project-statusAD b {
-  background-color: #d5ffd8;
-  color: #3dff4a;
-  padding: 4px 10px;
-  border-radius: 10px;
-  font-size: 14px;
-  display: inline-block;
-} */
-
-/* .project-statusPriority b {
-  background-color: #d6d5ff;
-  color: #403dff;
-  padding: 4px 10px;
-  border-radius: 10px;
-  font-size: 14px;
-  display: inline-block;
-} */
 
 span span {
   padding: 5px;
