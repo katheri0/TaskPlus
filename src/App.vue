@@ -1,6 +1,7 @@
 <script setup>
+import { reactive } from 'vue';
 
-const tasks = [
+const tasks = reactive([
   {
     name: "Website design",
     description: "Define the style guide, branding and create the webdesign on Figma.",
@@ -50,13 +51,13 @@ const tasks = [
     status: "Active",
     priorityStatus: "med priority"
   }
-];
+]);
 
 </script>
 
 <template>
 
-  <main class="container">
+  <main class="">
     <div class="header">
       <div class="header-side">
         <h1>
@@ -84,35 +85,22 @@ const tasks = [
 
     <div class="tasks">
 
-      <div class="task">
+      <div v-for="(task, index) in tasks" :key="index" class="task">
         <h3>
-          <span>Website design</span>
-          <span class="project-statusAD"><b>active</b></span>
-          <span class="project-statusPriority"><b>high priority</b></span>
+          <span>{{ task.name }}</span>
+          <span>
+            <span class="project-statusAD"><b>active</b></span>
+            <span class="project-statusPriority"><b>high priority</b></span>
+          </span>
         </h3>
 
         <p>
-          Define the style guide, branding and create the webdesign on Figma.
+          {{ task.description }}
         </p>
         <div class="task-check">
-          <input type="checkbox" checked />
+          <input type="checkbox" :checked="task.completed" />
           <label>
             Done
-          </label>
-        </div>
-      </div>
-
-      <div class="task">
-        <h3>
-          Website development
-        </h3>
-        <p>
-          Develop the portfolio website using Vue JS.
-        </p>
-        <div class="task-check">
-          <input type="checkbox" />
-          <label>
-            To-Do
           </label>
         </div>
       </div>
@@ -135,7 +123,6 @@ const tasks = [
 
 
 <style scoped>
-
 .project-statusAD b {
   background-color: #d5ffd8;
   color: #3dff4a;
@@ -154,11 +141,11 @@ const tasks = [
   display: inline-block;
 }
 
-h3 {
-  display: flex;
-  justify-content: space-between;
-}
+span span
+{
+  padding: 10px;
 
+}
 .header {
   display: flex;
   justify-content: space-between;
@@ -234,6 +221,7 @@ h3 {
   padding: 20px;
   border-radius: 12px;
   position: relative;
+  width: auto;
 }
 
 .task h3 {
@@ -242,8 +230,22 @@ h3 {
   line-height: 21px;
   letter-spacing: 0em;
   text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;  /* prevent title and statuses from wrapping */
+  gap: 10px;
 }
-
+.task h3 > span:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;  /* hides long titles with "..." */
+}
+.task h3 > span:last-child {
+  display: flex;
+  gap: 6px;
+  white-space: nowrap;  /* statuses stay on one line */
+  flex-shrink: 0;  /* prevents status group from shrinking */
+}
 .task p {
   margin-top: 24px;
   margin-bottom: 12px;
@@ -316,5 +318,4 @@ h3 {
   width: 360px;
   margin-top: 12px;
 }
-
 </style>
