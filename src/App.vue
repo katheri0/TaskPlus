@@ -1,7 +1,9 @@
 <script setup>
-import { reactive, ref,computed } from 'vue';
+import { reactive, ref, computed } from 'vue';
 import TaskCard from './components/TaskCard.vue';
 import Filter from './components/Filter.vue';
+import ModulWindow from './components/ModulWindow.vue';
+
 const tasks = reactive([
   {
     name: "Website design",
@@ -65,16 +67,17 @@ let newTask = { status: "Inactive", priorityStatus: "Low priority", completed: f
 
 let filterBY = ref("");
 
-const filteredTasks =computed(()=>
-{
-  switch(filterBY.value)
-  {
+let modelIsAcative = ref(false);
+
+
+const filteredTasks = computed(() => {
+  switch (filterBY.value) {
     case 'To-Do':
-    return tasks.filter(task => !task.completed);
-    break;
+      return tasks.filter(task => !task.completed);
+      break;
     case 'Done':
-    return tasks.filter(task => task.completed);
-    break;
+      return tasks.filter(task => task.completed);
+      break;
     default:
       return tasks;
   }
@@ -83,28 +86,24 @@ const filteredTasks =computed(()=>
 
 function addTask() {
   if (newTask.name && newTask.description) {
-    newTask.id =Math.max(...tasks.map(task => task.id)) + 1;
+    newTask.id = Math.max(...tasks.map(task => task.id)) + 1;
     tasks.push(newTask)
     newTask = { status: "Inactive", priorityStatus: "Low priority", completed: false }
   }
-  else {
+  else {  
     alert("fill the feilds")
   }
 }
 
-function toggleCompleted(id)
-{
-  tasks.forEach(task => 
-  {
-    if(task.id === id)
-    {
+function toggleCompleted(id) {
+  tasks.forEach(task => {
+    if (task.id === id) {
       task.completed = !task.completed;
     }
   })
 }
-function setFilter(value)
-{
-filterBY.value = value;
+function setFilter(value) {
+  filterBY.value = value;
 }
 </script>
 
@@ -117,12 +116,16 @@ filterBY.value = value;
           TaskPlus-Tasks Manager
         </h1>
       </div>
+      <div class="header-side">
+        <button  type="button" @click="modelIsAcative=true" class="btn secondary">Add a Task</button>
+      </div>
     </div>
 
-   <Filter :filterBY="filterBY" @setFilter="setFilter"/>
+    <Filter :filterBY="filterBY" @setFilter="setFilter" />
 
     <div class="tasks">
-      <taskCard @toggleCompleted ="toggleCompleted(task.id)" v-for="(task, index) in filteredTasks" :key="index" :task="task" />
+      <taskCard @toggleCompleted="toggleCompleted(task.id)" v-for="(task, index) in filteredTasks" :key="index"
+        :task="task" />
     </div>
 
     <div class="add-task">
@@ -132,7 +135,7 @@ filterBY.value = value;
       <button @click="addTask()" class="btn gray">Add Task</button>
 
     </div>
-
+    <ModulWindow @closePopup="modelIsAcative=flase" v-if="modelIsAcative" />
   </main>
 
 
