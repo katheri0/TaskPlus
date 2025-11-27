@@ -1,5 +1,6 @@
 <script setup>
 import { reactive } from 'vue';
+import TaskCard from './components/TaskCard.vue';
 
 const tasks = reactive([
   {
@@ -7,67 +8,81 @@ const tasks = reactive([
     description: "Define the style guide, branding and create the webdesign on Figma.",
     completed: true,
     status: "Active",
-    priorityStatus: "High priority"
+    priorityStatus: "High priority",
+    id: 1
   },
   {
     name: "Website development",
     description: "Develop the portfolio website using Vue JS.",
     completed: false,
     status: "Active",
-    priorityStatus: "Med priority"
+    priorityStatus: "Med priority",
+    id: 2
   },
   {
     name: "Hosting and infrastructure",
     description: "Define hosting, domain and infrastructure for the portfolio website.",
     completed: false,
     status: "Active",
-    priorityStatus: "Low priority"
+    priorityStatus: "Low priority",
+    id: 3
   },
   {
     name: "Composition API",
     description: "Learn how to use the composition API and how it compares to the options API.",
     completed: true,
     status: "Inactive",
-    priorityStatus: "Med priority"
+    priorityStatus: "Med priority",
+    id: 4
   },
   {
     name: "Pinia",
     description: "Learn how to setup a store using Pinia.",
     completed: true,
     status: "Active",
-    priorityStatus: "Med priority"
+    priorityStatus: "Med priority",
+    id: 5
   },
   {
     name: "Groceries",
     description: "Buy rice, apples and potatos.",
     completed: false,
     status: "Active",
-    priorityStatus: "Med priority"
+    priorityStatus: "Med priority",
+    id: 6
   },
   {
     name: "Bank account",
     description: "Open a bank account for my freelance business.",
     completed: false,
     status: "Active",
-    priorityStatus: "Med priority"
+    priorityStatus: "Med priority",
+    id: 7
   }
 ]);
 
-  // ---------- Helpers ----------
-  function getStatusClassPriority(statusText) {
-    if (statusText === 'High priority') return 'High-priority'
-    if (statusText === 'Med priority') return 'Med-priority'
-    if (statusText === 'Low priority') return 'Low-priority'
-
-    return ''
+let newTask = { status: "Inactive", priorityStatus: "Low priority", completed: false }
+function addTask() {
+  if (newTask.name && newTask.description) {
+    newTask.id =Math.max(...tasks.map(task => task.id)) + 1;
+    tasks.push(newTask)
+    newTask = { status: "Inactive", priorityStatus: "Low priority", completed: false }
   }
-    function getStatusClass(statusText) {
-    if (statusText === 'Active') return 'Active'
-    if (statusText === 'Inactive') return 'Inactive'
-
-    return ''
+  else {
+    alert("fill the feilds")
   }
+}
 
+function toggleCompleted(id)
+{
+  tasks.forEach(task => 
+  {
+    if(task.id === id)
+    {
+      task.completed = !task.completed;
+    }
+  })
+}
 </script>
 
 <template>
@@ -85,7 +100,7 @@ const tasks = reactive([
       <div>
         <p>Filter by state</p>
         <div class="badges">
-          <div class="badge">
+          <div class="badge"> 
             To-Do
           </div>
           <div class="badge">
@@ -99,38 +114,14 @@ const tasks = reactive([
     </div>
 
     <div class="tasks">
-
-      <div v-for="(task, index) in tasks" :key="index" class="task">
-        <h3>
-          <span>{{ task.name }}</span>
-          <span>
-            <span :class="getStatusClass(task.status)"><b>{{ task.status }}</b></span>
-            <span :class="getStatusClassPriority(task.priorityStatus)"><b>{{ task.priorityStatus }}</b></span>
-          </span>
-        </h3>
-
-        <p>
-          {{ task.description }}
-        </p>
-          <span>
-            <button class="Delete-btn"><b>Delete</b></button>
-            <button class="Edit-btn"><b>Edit</b></button>
-          </span>
-        <div class="task-check">
-          <input type="checkbox" :checked="task.completed" />
-          <label>
-            Done
-          </label>
-        </div>
-      </div>
-
+      <taskCard @toggleCompleted ="toggleCompleted(task.id)" v-for="(task, index) in tasks" :key="index" :task="task" />
     </div>
 
     <div class="add-task">
       <h3>Add a new task</h3>
-      <input type="text" name="title" placeholder="Enter a title..."><br />
-      <textarea name="description" rows="4" placeholder="Enter a description..." /><br />
-      <button class="btn gray">Add Task</button>
+      <input v-model="newTask.name" type="text" name="title" placeholder="Enter a title..."><br />
+      <textarea v-model="newTask.description" name="description" rows="4" placeholder="Enter a description..." /><br />
+      <button @click="addTask()" class="btn gray">Add Task</button>
 
     </div>
 
@@ -142,80 +133,6 @@ const tasks = reactive([
 
 
 <style scoped>
- .Edit-btn  {
-  background-color: #D6D5FF;
-  color: #2F60C4;
-  padding: 4px 10px;
-  border-radius: 10px;
-  font-size: 14px;
-  display: inline-block;
-  border: 2px solid #2F60C4;
-} 
-
-.Delete-btn {
-  background-color: #FFD5D5;
-  color: #FF3D3D;
-  padding: 4px 10px;
-  border-radius: 10px;
-  font-size: 14px;
-  display: inline-block;
-  border: 2px solid #FF3D3D;
-  margin: 3px;
-
-} 
-
-.High-priority
-{
-  background-color: #D6D5FF;
-  color: #403DFF;
-  padding: 4px 10px;
-  border-radius: 10px;
-  font-size: 14px;
-  display: inline-block;
-}
-.Med-priority
-{
-  background-color: #FFF4C8;
-  color: #FFC23D;
-  padding: 4px 10px;
-  border-radius: 10px;
-  font-size: 14px;
-  display: inline-block;
-}
-.Low-priority
-{
-  background-color: #FFD5D5;
-  color: #FF3D3D;
-  padding: 4px 10px;
-  border-radius: 10px;
-  font-size: 14px;
-  display: inline-block;
-
-}
-.Active
-{
-  background-color: #d5ffd8;
-  color: #3dff4a;
-  padding: 4px 10px;
-  border-radius: 10px;
-  font-size: 14px;
-  display: inline-block;
-}
-.Inactive
-{
-  background-color: #FFD5D5;
-  color: #FF3D3D;
-  padding: 4px 10px;
-  border-radius: 10px;
-  font-size: 14px;
-  display: inline-block;
-}
-
-span span {
-  padding: 5px;
-
-}
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -283,97 +200,6 @@ span span {
   }
 }
 
-.task {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--white-color);
-  color: var(--black-color);
-  padding: 20px;
-  border-radius: 12px;
-  position: relative;
-  width: auto;
-}
-
-.task h3 {
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 21px;
-  letter-spacing: 0em;
-  text-align: left;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  white-space: nowrap;
-  gap: 10px;
-}
-
-.task h3>span:first-child {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.task h3>span:last-child {
-  display: flex;
-  gap: 6px;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.task p {
-  margin-top: 24px;
-  margin-bottom: 12px;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 16px;
-  letter-spacing: 0em;
-  text-align: left;
-}
-
-.task .task-check {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-}
-
-.task .task-check label {
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 16px;
-  letter-spacing: 0em;
-  text-align: left;
-  margin-left: 5px;
-  cursor: pointer;
-}
-
-.task .task-check input {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 18px;
-  height: 18px;
-  border-radius: 100%;
-  border: 0.77px solid #AEAEB2;
-  appearance: none;
-  cursor: pointer;
-}
-
-.task .task-check input:checked {
-  background-color: #0A7AFF;
-  border-color: #0A7AFF;
-}
-
-.task .task-check input:checked::before {
-  content: '';
-  display: block;
-  width: 4.5px;
-  height: 9px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
 
 .add-task {
   margin-top: 60px;
