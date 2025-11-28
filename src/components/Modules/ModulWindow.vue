@@ -1,6 +1,5 @@
 <script setup>
 import ModulCloseBtn from './ModulCloseBtn.vue';
-
 </script>
 <template>
     <div class="modal-wrapper" tabindex="-1">
