@@ -90,7 +90,7 @@ function addTask() {
     tasks.push(newTask)
     newTask = { status: "Inactive", priorityStatus: "Low priority", completed: false }
   }
-  else {  
+  else {
     alert("fill the feilds")
   }
 }
@@ -117,7 +117,7 @@ function setFilter(value) {
         </h1>
       </div>
       <div class="header-side">
-        <button  type="button" @click="modelIsAcative=true" class="btn secondary">Add a Task</button>
+        <button type="button" @click="modelIsAcative = true" class="btn secondary">Add a Task</button>
       </div>
     </div>
 
@@ -128,14 +128,20 @@ function setFilter(value) {
         :task="task" />
     </div>
 
-    <div class="add-task">
-      <h3>Add a new task</h3>
-      <input v-model="newTask.name" type="text" name="title" placeholder="Enter a title..."><br />
-      <textarea v-model="newTask.description" name="description" rows="4" placeholder="Enter a description..." /><br />
-      <button @click="addTask()" class="btn gray">Add Task</button>
 
-    </div>
-    <ModulWindow @closePopup="modelIsAcative=flase" v-if="modelIsAcative" />
+    <ModulWindow @closePopup="modelIsAcative=flase" v-if="modelIsAcative">
+      <div class="form">
+        <div class="add-task">
+          <h3>Add a new task</h3>
+          <input v-model="newTask.name" type="text" name="title" placeholder="Enter a title..."><br />
+          <textarea v-model="newTask.description" name="description" rows="4"
+            placeholder="Enter a description..." /><br />
+          <button @click="addTask()" class="btn gray">Add Task</button>
+
+        </div>
+      </div>
+    </ModulWindow>
+
   </main>
 
 

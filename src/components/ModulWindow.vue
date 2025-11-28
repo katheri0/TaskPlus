@@ -6,11 +6,9 @@ import ModulCloseBtn from './ModulCloseBtn.vue';
     <div class="modal-wrapper" tabindex="-1">
         <div class="inner">
 
-            <ModulCloseBtn @click="$emit('closePopup ')" />
+            <ModulCloseBtn @click="$emit('closePopup')" />
+            <slot></slot>
 
-            <div class="form">
-                Your Popup Content Goes Here
-            </div>
         </div>
     </div>
 </template>
