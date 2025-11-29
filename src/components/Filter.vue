@@ -1,5 +1,6 @@
 <script setup>
-const props =defineProps(['filterBY'])
+import { useTasksStore } from '@/stores/TasksStore';
+const store = useTasksStore()
 
 </script>
 
@@ -8,19 +9,13 @@ const props =defineProps(['filterBY'])
         <div>
             <p>Filter by state</p>
             <div class="badges">
-                <div 
-                 @click="$emit('setFilter', 'To-Do')"
-                class="badge" :class="{selected: filterBY === 'To-Do'}">
+                <div @click="store.setFilter('To-Do')" class="badge" :class="{ selected: store.filterBY === 'To-Do' }">
                     To-Do
                 </div>
-                <div
-                 @click="$emit('setFilter', 'Done')"
-                 class="badge" :class="{selected: filterBY === 'Done'}">
+                <div @click="store.setFilter('Done')" class="badge" :class="{ selected: store.filterBY === 'Done' }">
                     Done
                 </div>
-                <span
-                 @click="$emit('setFilter', '')"
-                 v-if="filterBY" class="clear">
+                <span @click="store.setFilter('')" v-if="store.filterBY" class="clear">
                     x clear
                 </span>
             </div>
@@ -59,18 +54,19 @@ const props =defineProps(['filterBY'])
     text-align: left;
     cursor: pointer;
 }
+
 .badge {
-  padding: 8px 7px;
-  background-color: var(--gray-color);
-  color: var(--black-color);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 16px;
-  letter-spacing: 0em;
-  text-align: left;
-  border-radius: 8px;
-  cursor: pointer;
-  user-select: none;
+    padding: 8px 7px;
+    background-color: var(--gray-color);
+    color: var(--black-color);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
 }
 
 .badge.selected {

@@ -9,27 +9,12 @@ import { useTasksStore } from './stores/TasksStore';
 const store = useTasksStore();
 
 let newTask = { status: "Inactive", priorityStatus: "Low priority", completed: false }
-
-let filterBY = ref("");
+// filterBY
 
 let modelIsAcative = ref(false);
 
-
-const filteredTasks = computed(() => {
-  switch (filterBY.value) {
-    case 'To-Do':
-      return store.tasks.filter(task => !task.completed);
-      break;
-    case 'Done':
-      return store.tasks.filter(task => task.completed);
-      break;
-    default:
-      return store.tasks;
-  }
-}
-)
-
-function addTask() {
+ 
+function addTask() { 
   if (newTask.name && newTask.description) {
     newTask.id = Math.max(...store.tasks.map(task => task.id)) + 1;
     store.tasks.push(newTask)
@@ -47,9 +32,7 @@ function toggleCompleted(id) {
     }
   })
 }
-function setFilter(value) {
-  filterBY.value = value;
-}
+
 </script>
 
 <template>
@@ -66,10 +49,10 @@ function setFilter(value) {
       </div>
     </div>
 
-    <Filter :filterBY="filterBY" @setFilter="setFilter" />
+    <Filter />
 
     <div class="tasks">
-      <taskCard @toggleCompleted="toggleCompleted(task.id)" v-for="(task, index) in filteredTasks" :key="index"
+      <taskCard @toggleCompleted="toggleCompleted(task.id)" v-for="(task, index) in store.filteredTasks" :key="index"
         :task="task" />
     </div>
 
