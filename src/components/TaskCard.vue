@@ -1,21 +1,10 @@
 <script setup>
 
+import { useTasksStore } from '@/stores/TasksStore';
+const store = useTasksStore()
 const props =defineProps(['task'])
 
-  // ---------- Helpers ----------
-  function getStatusClassPriority(statusText) {
-    if (statusText === 'High priority') return 'High-priority'
-    if (statusText === 'Med priority') return 'Med-priority'
-    if (statusText === 'Low priority') return 'Low-priority'
 
-    return ''
-  }
-    function getStatusClass(statusText) {
-    if (statusText === 'Active') return 'Active'
-    if (statusText === 'Inactive') return 'Inactive'
-
-    return ''
-  }
 
 </script>
 
@@ -24,8 +13,8 @@ const props =defineProps(['task'])
         <h3>
           <span>{{ task.name }} - {{ task.id }}</span>
           <span>
-            <span :class="getStatusClass(task.status)"><b>{{ task.status }}</b></span>
-            <span :class="getStatusClassPriority(task.priorityStatus)"><b>{{ task.priorityStatus }}</b></span>
+            <span :class="store.getStatusClass(task.status)"><b>{{ task.status }}</b></span>
+            <span :class="store.getStatusClassPriority(task.priorityStatus)"><b>{{ task.priorityStatus }}</b></span>
           </span>
         </h3>
 
@@ -37,7 +26,7 @@ const props =defineProps(['task'])
             <button class="Edit-btn"><b>Edit</b></button>
           </span>
         <div class="task-check">
-          <input @click="$emit('toggleCompleted', task.id )" type="checkbox" :checked="task.completed" />
+          <input @click="store.toggleCompleted(task.id)" type="checkbox" :checked="task.completed" />
           <label>
             {{  task.completed? "Done":"To-Do"}}
           </label>

@@ -73,7 +73,40 @@ export const useTasksStore = defineStore('tasks', () => {
                 return tasks;
         }
     }
-    ) 
+    )
+
+    function addTask() {
+        if (newTask.name && newTask.description) {
+            newTask.id = Math.max(...tasks.map(task => task.id)) + 1;
+            tasks.push(newTask)
+            newTask = { status: "Inactive", priorityStatus: "Low priority", completed: false }
+        }
+        else {
+            alert("fill the feilds")
+        }
+    }
+
+    function toggleCompleted(id) {
+        tasks.forEach(task => {
+            if (task.id === id) {
+                task.completed = !task.completed;
+            }
+        })
+    }
+    // ---------- Helpers ----------
+    function getStatusClassPriority(statusText) {
+        if (statusText === 'High priority') return 'High-priority'
+        if (statusText === 'Med priority') return 'Med-priority'
+        if (statusText === 'Low priority') return 'Low-priority'
+
+        return ''
+    }
+    function getStatusClass(statusText) {
+        if (statusText === 'Active') return 'Active'
+        if (statusText === 'Inactive') return 'Inactive'
+
+        return ''
+    }
 
     return {
         // variables, arrays 
@@ -82,6 +115,10 @@ export const useTasksStore = defineStore('tasks', () => {
 
         // functions
         setFilter,
+        addTask,
+        toggleCompleted,
+        getStatusClass,
+        getStatusClassPriority,
 
         //computed
         filteredTasks,

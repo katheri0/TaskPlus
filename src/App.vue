@@ -9,29 +9,10 @@ import { useTasksStore } from './stores/TasksStore';
 const store = useTasksStore();
 
 let newTask = { status: "Inactive", priorityStatus: "Low priority", completed: false }
-// filterBY
 
 let modelIsAcative = ref(false);
 
  
-function addTask() { 
-  if (newTask.name && newTask.description) {
-    newTask.id = Math.max(...store.tasks.map(task => task.id)) + 1;
-    store.tasks.push(newTask)
-    newTask = { status: "Inactive", priorityStatus: "Low priority", completed: false }
-  }
-  else {
-    alert("fill the feilds")
-  }
-}
-
-function toggleCompleted(id) {
-  store.tasks.forEach(task => {
-    if (task.id === id) {
-      task.completed = !task.completed;
-    }
-  })
-}
 
 </script>
 
@@ -52,7 +33,7 @@ function toggleCompleted(id) {
     <Filter />
 
     <div class="tasks">
-      <taskCard @toggleCompleted="toggleCompleted(task.id)" v-for="(task, index) in store.filteredTasks" :key="index"
+      <taskCard  v-for="(task, index) in store.filteredTasks" :key="index"
         :task="task" />
     </div>
 
