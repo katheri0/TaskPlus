@@ -1,11 +1,14 @@
 <script setup>
 import ModulCloseBtn from './ModulCloseBtn.vue';
+import { useModulStore } from '@/stores/ModulStore';
+const ModulStore = useModulStore();
+
 </script>
 <template>
     <div class="modal-wrapper" tabindex="-1">
         <div class="inner">
 
-            <ModulCloseBtn @click="$emit('closePopup')" />
+            <ModulCloseBtn @click="ModulStore.CLoseModul()" />
             <slot></slot>
 
         </div>

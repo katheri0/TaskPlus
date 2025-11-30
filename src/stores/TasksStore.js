@@ -1,5 +1,7 @@
 import { defineStore } from "pinia";
 import { reactive, computed, ref } from "vue";
+import { useModulStore } from "./ModulStore";
+
 export const useTasksStore = defineStore('tasks', () => {
     const tasks = reactive([
         {
@@ -75,11 +77,12 @@ export const useTasksStore = defineStore('tasks', () => {
     }
     )
 
-    function addTask() {
+    function addTask(newTask) {
         if (newTask.name && newTask.description) {
             newTask.id = Math.max(...tasks.map(task => task.id)) + 1;
             tasks.push(newTask)
-            newTask = { status: "Inactive", priorityStatus: "Low priority", completed: false }
+            const ModulStore = useModulStore();
+            ModulStore.CLoseModul();
         }
         else {
             alert("fill the feilds")

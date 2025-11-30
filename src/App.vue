@@ -1,16 +1,14 @@
 <script setup>
-import { reactive, ref, computed } from 'vue';
 import TaskCard from './components/TaskCard.vue';
 import Filter from './components/Filter.vue';
 import ModulWindow from './components/Modules/ModulWindow.vue';
 import AddTaskModul from './components/Modules/AddTaskModul.vue';
 import { useTasksStore } from './stores/TasksStore';
+import { useModulStore } from './stores/ModulStore';
 
 const store = useTasksStore();
+const ModulStore = useModulStore();
 
-let newTask = { status: "Inactive", priorityStatus: "Low priority", completed: false }
-
-let modelIsAcative = ref(false);
 
  
 
@@ -26,7 +24,7 @@ let modelIsAcative = ref(false);
         </h1>
       </div>
       <div class="header-side">
-        <button type="button" @click="modelIsAcative = true" class="btn secondary">Add a Task</button>
+        <button type="button" @click="ModulStore.OpenModul()" class="btn secondary">Add a Task</button>
       </div>
     </div>
 
@@ -38,7 +36,7 @@ let modelIsAcative = ref(false);
     </div>
 
 
-    <ModulWindow @closePopup="modelIsAcative = flase" v-if="modelIsAcative">
+    <ModulWindow  v-if="ModulStore.modelIsAcative">
       <AddTaskModul />
     </ModulWindow>
 
