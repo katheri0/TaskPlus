@@ -8,7 +8,9 @@ import { useModulStore } from './stores/ModulStore';
 
 const store = useTasksStore();
 const ModulStore = useModulStore();
-
+store.$subscribe((mutation, state) => {
+  localStorage.setItem('tasks', JSON.stringify(state.tasks))
+})
 
  
 
