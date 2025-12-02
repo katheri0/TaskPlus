@@ -2,10 +2,6 @@
 import { useTasksStore } from '@/stores/TasksStore';
 const store = useTasksStore()
 const props =defineProps(['task'])
-import { useModulStore } from '@/stores/ModulStore';
-const ModulStore = useModulStore();
-
-
 </script>
 
 <template>
@@ -23,6 +19,7 @@ const ModulStore = useModulStore();
         </p>
           <span>
             <button @click="store.deleteTask(task.id)" class="Delete-btn"><b>Delete</b></button>
+
             <button @click="store.startEditTask(task.id)"  class="Edit-btn"><b>Edit</b></button>
           </span>
         <div class="task-check">

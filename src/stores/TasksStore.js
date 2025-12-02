@@ -63,7 +63,12 @@ export const useTasksStore = defineStore('tasks', () => {
         const modalStore = useModulStore();
         modalStore.closeModule();
     }
+    function deleteTask(taskId) {
+        const taskIndex = tasks.findIndex(task => task.id === taskId);
+        if (taskIndex === -1) return;
 
+        tasks.splice(taskIndex, 1);
+    }
     function toggleCompleted(id) {
         tasks.forEach(task => {
             if (task.id === id) {
@@ -102,6 +107,7 @@ export const useTasksStore = defineStore('tasks', () => {
         startEditTask,
         updateTask,
         deleteTask,
+         
         //computed
         filteredTasks,
     }
