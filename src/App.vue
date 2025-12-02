@@ -5,14 +5,13 @@ import ModulWindow from './components/Modules/ModulWindow.vue';
 import AddTaskModul from './components/Modules/AddTaskModul.vue';
 import { useTasksStore } from './stores/TasksStore';
 import { useModulStore } from './stores/ModulStore';
+import EditTaskModul from './components/Modules/EditTaskModul.vue';
 
 const store = useTasksStore();
 const ModulStore = useModulStore();
 store.$subscribe((mutation, state) => {
   localStorage.setItem('tasks', JSON.stringify(state.tasks))
 })
-
- 
 
 </script>
 
@@ -26,25 +25,26 @@ store.$subscribe((mutation, state) => {
         </h1>
       </div>
       <div class="header-side">
-        <button type="button" @click="ModulStore.OpenModul()" class="btn secondary">Add a Task</button>
+        <button type="button" @click="ModulStore.openAddModule()" class="btn secondary">Add a Task</button>
       </div>
     </div>
 
     <Filter />
 
     <div class="tasks">
-      <taskCard  v-for="(task, index) in store.filteredTasks" :key="index"
-        :task="task" />
+      <taskCard v-for="(task, index) in store.filteredTasks" :key="index" :task="task" />
     </div>
 
 
-    <ModulWindow  v-if="ModulStore.modelIsAcative">
-      <AddTaskModul />
-    </ModulWindow>
+<ModulWindow v-if="ModulStore.isActive">
+
+  <AddTaskModul v-if="ModulStore.activeModule === 'add'" />
+
+  <EditTaskModul v-if="ModulStore.activeModule === 'edit'" />
+
+</ModulWindow>
 
   </main>
-
-
 
 </template>
 

@@ -5,6 +5,12 @@ import { useModulStore } from "./ModulStore";
 export const useTasksStore = defineStore('tasks', () => {
     const tasks = reactive(JSON.parse(localStorage.getItem('tasks')) || []);
     let filterBY = ref("");
+    const editedTask = ref({
+        name: "",
+        description: ""
+    });
+    const editTaskId = ref(null);
+
     function setFilter(value) {
         filterBY.value = value;
     }
@@ -25,11 +31,37 @@ export const useTasksStore = defineStore('tasks', () => {
             newTask.id = tasks.length ? Math.max(...tasks.map(task => task.id)) + 1 : 1;
             tasks.push(newTask)
             const ModulStore = useModulStore();
-            ModulStore.CLoseModul();
+            ModulStore.closeModule();
         }
         else {
             alert("fill the feilds")
         }
+    }
+
+    function startEditTask(selectedTaskId) {
+        const taskToEdit = tasks.find(task => task.id === selectedTaskId);
+        if (!taskToEdit) return;
+
+        editedTask.value = {
+            name: taskToEdit.name,
+            description: taskToEdit.description
+        };
+
+        editTaskId.value = selectedTaskId;
+
+        const modalStore = useModulStore();
+        modalStore.openEditModule();
+    }
+
+    function updateTask() {
+        const targetTask = tasks.find(task => task.id === editTaskId.value);
+        if (!targetTask) return;
+
+        targetTask.name = editedTask.value.name;
+        targetTask.description = editedTask.value.description;
+
+        const modalStore = useModulStore();
+        modalStore.closeModule();
     }
 
     function toggleCompleted(id) {
@@ -58,6 +90,8 @@ export const useTasksStore = defineStore('tasks', () => {
         // variables, arrays 
         tasks,
         filterBY,
+        editTaskId,
+        editedTask,
 
         // functions
         setFilter,
@@ -65,7 +99,9 @@ export const useTasksStore = defineStore('tasks', () => {
         toggleCompleted,
         getStatusClass,
         getStatusClassPriority,
-
+        startEditTask,
+        updateTask,
+        deleteTask,
         //computed
         filteredTasks,
     }

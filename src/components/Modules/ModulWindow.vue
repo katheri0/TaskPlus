@@ -8,7 +8,7 @@ const ModulStore = useModulStore();
     <div class="modal-wrapper" tabindex="-1">
         <div class="inner">
 
-            <ModulCloseBtn @click="ModulStore.CLoseModul()" />
+            <ModulCloseBtn @click="ModulStore.closeModule()" />
             <slot></slot>
 
         </div>

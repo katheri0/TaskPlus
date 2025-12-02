@@ -1,9 +1,9 @@
 <script setup>
-
 import { useTasksStore } from '@/stores/TasksStore';
 const store = useTasksStore()
 const props =defineProps(['task'])
-
+import { useModulStore } from '@/stores/ModulStore';
+const ModulStore = useModulStore();
 
 
 </script>
@@ -11,7 +11,7 @@ const props =defineProps(['task'])
 <template>
  <div  class="task">
         <h3>
-          <span>{{ task.name }} - {{ task.id }}</span>
+          <span>{{ task.name }} </span>
           <span>
             <span :class="store.getStatusClass(task.status)"><b>{{ task.status }}</b></span>
             <span :class="store.getStatusClassPriority(task.priorityStatus)"><b>{{ task.priorityStatus }}</b></span>
@@ -22,8 +22,8 @@ const props =defineProps(['task'])
           {{ task.description }}
         </p>
           <span>
-            <button class="Delete-btn"><b>Delete</b></button>
-            <button class="Edit-btn"><b>Edit</b></button>
+            <button @click="store.deleteTask(task.id)" class="Delete-btn"><b>Delete</b></button>
+            <button @click="store.startEditTask(task.id)"  class="Edit-btn"><b>Edit</b></button>
           </span>
         <div class="task-check">
           <input @click="store.toggleCompleted(task.id)" type="checkbox" :checked="task.completed" />
@@ -33,6 +33,7 @@ const props =defineProps(['task'])
         </div>
       </div>
 </template>
+
 <style scoped>
 
  .Edit-btn  {
