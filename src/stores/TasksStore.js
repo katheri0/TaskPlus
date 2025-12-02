@@ -1,9 +1,11 @@
 import { defineStore } from "pinia";
 import { reactive, computed, ref } from "vue";
 import { useModulStore } from "./ModulStore";
+import { loadFromLocalStorage } from '@/utils/storage'
+
 
 export const useTasksStore = defineStore('tasks', () => {
-    const tasks = reactive(JSON.parse(localStorage.getItem('tasks')) || []);
+const tasks = reactive(loadFromLocalStorage('tasks', []))
     let filterBY = ref("");
     const editedTask = ref({
         name: "",

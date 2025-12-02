@@ -6,12 +6,14 @@ import AddTaskModul from './components/Modules/AddTaskModul.vue';
 import { useTasksStore } from './stores/TasksStore';
 import { useModulStore } from './stores/ModulStore';
 import EditTaskModul from './components/Modules/EditTaskModul.vue';
-
 const store = useTasksStore();
 const ModulStore = useModulStore();
+import { saveToLocalStorage } from '@/utils/storage'
+
 store.$subscribe((mutation, state) => {
-  localStorage.setItem('tasks', JSON.stringify(state.tasks))
+  saveToLocalStorage('tasks', state.tasks)
 })
+
 
 </script>
 
@@ -36,13 +38,13 @@ store.$subscribe((mutation, state) => {
     </div>
 
 
-<ModulWindow v-if="ModulStore.isActive">
+    <ModulWindow v-if="ModulStore.isActive">
 
-  <AddTaskModul v-if="ModulStore.activeModule === 'add'" />
+      <AddTaskModul v-if="ModulStore.activeModule === 'add'" />
 
-  <EditTaskModul v-if="ModulStore.activeModule === 'edit'" />
+      <EditTaskModul v-if="ModulStore.activeModule === 'edit'" />
 
-</ModulWindow>
+    </ModulWindow>
 
   </main>
 
