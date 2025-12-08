@@ -1,7 +1,8 @@
 <script setup>
 import { RouterView } from 'vue-router';
 import { saveToLocalStorage } from '@/utils/storage'
-import TaskView from './view/TaskView.vue';
+// import TaskView from './view/TaskView.vue';
+import HomeView from './view/HomeView.vue';
 import { useTasksStore } from '@/stores/TasksStore';
 const store = useTasksStore();
 store.$subscribe((mutation, state) => {
@@ -10,14 +11,11 @@ store.$subscribe((mutation, state) => {
 
 
 </script>
-
 <template>
-  <TaskView />
+  <HomeView />
   <RouterView />
 
 </template>
 
 
-<style scoped>
-  
-</style>
+<style scoped></style>

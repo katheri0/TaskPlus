@@ -1,11 +1,184 @@
+<!-- src/views/HomeView.vue -->
 <script setup>
-
+import HeaderView from './HeaderView.vue';
+/* No reactive state for the static landing hero. Kept clean and semantic. */
 </script>
 
 <template>
+  <HeaderView />
+  <section class="home">
+    <div class="home__container">
+      <aside class="home__left">
+        <h1 class="home__title">
+          Level Up<br />
+          <span class="home__with">With</span><br />
+          <span class="home__brand">TaskPlus</span>
+        </h1>
 
+        <p class="home__subtitle">Task/Note Manager</p>
+
+        <p class="home__note">No Signup / Login — straight to work</p>
+
+        <a class="btn btn--primary" href="/features" rel="nofollow">Try It Now</a>
+      </aside>
+
+      <figure class="home__right" aria-hidden="true">
+        <div class="mockup">
+
+          <dev class="cardone"><img src="/src/assets/images/Card.svg" alt="TaskPlus mockup"
+              class="mockup__image" /><span class="S R">Note</span></dev>
+              <br>
+              <br>
+          <dev class="cardone L"><span class="S">Task</span><img class="mockup__image "
+              src="/src/assets/images/Card2.svg" alt="TaskPlus mockup" /></dev>
+        </div>
+      </figure>
+    </div>
+  </section>
 </template>
+
+
 <style scoped>
+.R {
+  padding-left: 40px;
+}
 
+.L {
+  justify-content: end;
+}
 
+.S {
+
+  font-size: 44px;
+  text-align: center;
+  color: black;
+  justify-items: center;
+  display: flex;
+  padding-right: 40px;
+  align-items: center;
+}
+
+.cardone {
+  display: flex;
+
+}
+
+:root {
+  --bg: #b9d3f6;
+  --accent: #2f5fa0;
+  --card: #fff;
+  --muted: #222;
+}
+
+.home {
+  background: var(--bg);
+  padding: 28px 0;
+}
+
+.home__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 520px;
+  gap: 28px;
+  align-items: center;
+}
+
+/* Left: hero text */
+.home__left {
+  padding: 12px 18px;
+}
+
+.home__title {
+  font-size: 46px;
+  line-height: 1.02;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 12px;
+  mix-blend-mode: normal;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.02);
+}
+
+.home__with {
+  font-weight: 500;
+  display: block;
+  font-size: 36px;
+  color: #fff;
+}
+
+.home__brand {
+  display: inline-block;
+  font-weight: 800;
+  font-size: 48px;
+  color: var(--card);
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-top: 6px;
+}
+
+.home__subtitle {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 600;
+  margin: 12px 0;
+  font-size: 42px;
+}
+
+.home__note {
+  margin: 18px 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+}
+
+/* CTA */
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* Right: mockup */
+.mockup {
+  height: 470px;
+  width: 650px;
+  background: white;
+  padding: 18px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.mockup__image {
+  width: 70%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .home__container {
+    grid-template-columns: 1fr;
+    padding: 0 18px;
+  }
+
+  .home__title {
+    font-size: 36px;
+  }
+
+  .home__brand {
+    font-size: 36px;
+  }
+
+  .mockup {
+    order: -1;
+  }
+}
 </style>

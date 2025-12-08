@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #1f2c47;
+  --primary-color: #9EBEF1;
   --secondary-color: #2d41a7;
   --gray-color: #dddddd;
   --white-color: #ffffff;
@@ -10,7 +10,7 @@ body {
   background-color: var(--primary-color);
   color: #fff;
   height: 100%;
-  padding: 60px;
+  padding: 20px;
 }
 
 .container {
