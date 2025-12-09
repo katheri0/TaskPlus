@@ -1,7 +1,7 @@
 <!-- src/views/HomeView.vue -->
 <script setup>
 import HeaderView from './HeaderView.vue';
-/* No reactive state for the static landing hero. Kept clean and semantic. */
+
 </script>
 
 <template>
@@ -19,7 +19,7 @@ import HeaderView from './HeaderView.vue';
 
         <p class="home__note">No Signup / Login — straight to work</p>
 
-        <a class="btn btn--primary" href="/features" rel="nofollow">Try It Now</a>
+        <a class="btn btn--primary"  rel="nofollow" >Try It Now</a>
       </aside>
 
       <figure class="home__right" aria-hidden="true">

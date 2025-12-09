@@ -72,7 +72,7 @@
 }
 .nav__link {
   display: inline-block;
-  padding: 8px 14px;
+  padding: 8px 34px;
   border-radius: 8px;
   text-decoration: none;
   color: #fff;
