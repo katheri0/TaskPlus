@@ -19,18 +19,14 @@ import HeaderView from './HeaderView.vue';
 
         <p class="home__note">No Signup / Login — straight to work</p>
 
-        <a class="btn btn--primary"  rel="nofollow" >Try It Now</a>
+        <a class="btn btn--primary" rel="nofollow">Try It Now</a>
       </aside>
 
       <figure class="home__right" aria-hidden="true">
         <div class="mockup">
-
-          <dev class="cardone"><img src="/src/assets/images/Card.svg" alt="TaskPlus mockup"
-              class="mockup__image" /><span class="S R">Note</span></dev>
-              <br>
-              <br>
-          <dev class="cardone L"><span class="S">Task</span><img class="mockup__image "
-              src="/src/assets/images/Card2.svg" alt="TaskPlus mockup" /></dev>
+          <dev class="cardone L">
+            <img class="mockup__image " src="/src/assets/images/componets.svg" alt="TaskPlus mockup" />
+          </dev>
         </div>
       </figure>
     </div>
@@ -48,19 +44,20 @@ import HeaderView from './HeaderView.vue';
 }
 
 .S {
-
-  font-size: 44px;
   text-align: center;
   color: black;
   justify-items: center;
   display: flex;
   padding-right: 40px;
+  padding-bottom: 10px;
   align-items: center;
 }
 
 .cardone {
   display: flex;
-
+  justify-content: center;
+  align-items: center;
+  padding-top: 60px;
 }
 
 :root {
@@ -155,11 +152,11 @@ import HeaderView from './HeaderView.vue';
 }
 
 .mockup__image {
+  scale: 1.4;
   width: 70%;
   height: auto;
   display: block;
   border-radius: 8px;
-
 }
 
 /* Responsive */
