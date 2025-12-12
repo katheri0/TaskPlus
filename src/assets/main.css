@@ -12,7 +12,9 @@ body {
   height: 100%;
   padding: 20px;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 .container {
   max-width: 80rem;
   margin-inline: auto;

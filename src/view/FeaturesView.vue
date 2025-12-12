@@ -2,7 +2,7 @@
 
 </script>
 <template>
-    <div class="warp">
+    <div  id="features" class="warp">
         <div class="mockup">
             <h1>Features</h1>
             <dev class="cardone">
