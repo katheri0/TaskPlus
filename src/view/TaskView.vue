@@ -6,6 +6,7 @@ import AddTaskModul from '@/components/Modules/AddTaskModul.vue';
 import { useModulStore } from '@/stores/ModulStore';
 import { useTasksStore } from '@/stores/TasksStore';
 import EditTaskModul from '@/components/Modules/EditTaskModul.vue';
+import backBtn from '@/components/Tasks/backBtn.vue';
 const store = useTasksStore();
 const ModulStore = useModulStore();
 
@@ -14,7 +15,7 @@ const ModulStore = useModulStore();
 </script>
 
 <template>
-
+    <backBtn />
   <main class="">
     <div class="header">
       <div class="header-side">
