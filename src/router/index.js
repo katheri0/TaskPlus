@@ -12,7 +12,7 @@ const router = createRouter({
     // { path: '/developer', name: 'developer', component: developerView },
     { path: '/tasks', name: 'tasks', component: TaskView },
     // { path: '/notes', name: 'Notes', component: NotesView },
-    // { path: '/:catchAll(.*)', name: 'not-found', component: notFoundView }
+    { path: '/:catchAll(.*)', name: 'not-found', component: notFoundView }
   ]
 });
 

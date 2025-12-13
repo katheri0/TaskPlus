@@ -1,47 +1,79 @@
 <script setup>
-    
 </script>
 
-
 <template>
-    <div class="custom-bg text-dark">
-    <div class="d-flex align-items-center justify-content-center min-vh-100 px-2">
-        <div class="text-center">
-            <i class="pi pi-exclamation-triangle text-warning fs-1 mb-5"></i>
-            <h1 class="display-1 fw-bold">404</h1>
-            <p class="fs-2 fw-medium mt-4">عفواً! لم يتم العثور على الصفحة</p>
-            <p class="mt-4 mb-5">الصفحة التي تبحث عنها غير موجودة أو تم نقلها.</p>
-            <a href="/" class="btn btn-light fw-semibold rounded-pill px-4 py-2 custom-btn">
+    <div class="not-found">
+        <div class="container not-found__content">
+            <i class="pi pi-exclamation-triangle not-found__icon"></i>
+
+            <h1 class="not-found__code">404</h1>
+
+            <p class="not-found__title">
+                عفواً! لم يتم العثور على الصفحة
+            </p>
+
+            <p class="not-found__description">
+                الصفحة التي تبحث عنها غير موجودة أو تم نقلها.
+            </p>
+
+            <a href="/" class="btn primary not-found__action">
                 العودة الى الصفحة الرئيسية
             </a>
         </div>
     </div>
-</div>
 </template>
 
 <style scoped>
-.custom-bg {
-    background: linear-gradient(to right, #e2e8f0, #e5e7eb);
+.not-found {
+    min-height: 94vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    color: var(--white-color);
 }
 
-.custom-btn:hover {
-    background-color: #f3e8ff !important;
-    transition: background-color 0.3s ease-in-out;
+.not-found__content {
+    text-align: center;
 }
 
-@media (prefers-color-scheme: dark) {
-    .custom-bg {
-        background: linear-gradient(to right, #1f2937, #111827);
-        color: white !important;
-    }
+.not-found__icon {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+}
 
-    .custom-btn {
-        background-color: #374151 !important;
-        color: white !important;
-    }
+.not-found__code {
+    font-size: 6rem;
+    font-weight: 700;
+    line-height: 1;
+}
 
-    .custom-btn:hover {
-        background-color: #4b5563 !important;
-    }
+.not-found__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.not-found__description {
+    margin-top: 0.75rem;
+    margin-bottom: 2rem;
+    color: var(--gray-color);
+}
+
+.not-found__action {
+    padding-inline: 1.25rem;
+}
+
+/* Dark mode alignment */
+
+.not-found {
+    background-color: #799eda;
+    color: var(--white-color);
+    border-radius: 24px;
+}
+
+.not-found__description {
+    color: var(--gray-color);
 }
 </style>
