@@ -1,11 +1,15 @@
 <!-- src/views/HomeView.vue -->
 <script setup>
-import HeaderView from './HeaderView.vue';
-
+import { RouterLink } from 'vue-router';
+import Header from '../components/Header.vue';
+import Features from '../components/Features.vue';
+import developer from '@/components/developer.vue';
+import Footer from '@/components/Footer.vue';
+import AboutUs from '@/components/AboutUs.vue';
 </script>
 
 <template>
-  <HeaderView />
+  <Header />
   <section class="home">
     <div class="home__container">
       <aside class="home__left">
@@ -19,7 +23,7 @@ import HeaderView from './HeaderView.vue';
 
         <p class="home__note">No Signup / Login — straight to work</p>
 
-        <a class="btn btn--primary" rel="nofollow">Try It Now</a>
+        <RouterLink to="/tasks" class="btn btn--primary" rel="nofollow">Try It Now </RouterLink>
       </aside>
 
       <figure class="home__right" aria-hidden="true">
@@ -31,6 +35,18 @@ import HeaderView from './HeaderView.vue';
       </figure>
     </div>
   </section>
+  <br>
+
+  <Features />
+  <br>
+  <br>
+  <AboutUs />
+  <br>
+  <developer />
+  <br>
+  <Footer />
+
+
 </template>
 
 

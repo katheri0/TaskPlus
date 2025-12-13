@@ -85,4 +85,8 @@ const ModulStore = useModulStore();
     grid-template-columns: repeat(1, 1fr);
   }
 }
+main
+{
+  padding-top: 60px  !important;
+}
 </style>
