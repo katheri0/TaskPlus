@@ -1,6 +1,6 @@
 <script setup>
-import TaskCard from '@/components/TaskCard.vue';
-import Filter from '@/components/Filter.vue';
+import TaskCard from '@/components/Tasks/TaskCard.vue';
+import Filter from '@/components/Tasks/Filter.vue';
 import ModulWindow from '@/components/Modules/ModulWindow.vue';
 import AddTaskModul from '@/components/Modules/AddTaskModul.vue';
 import { useModulStore } from '@/stores/ModulStore';

@@ -1,11 +1,11 @@
 <!-- src/views/HomeView.vue -->
 <script setup>
 import { RouterLink } from 'vue-router';
-import Header from '../components/Header.vue';
-import Features from '../components/Features.vue';
-import developer from '@/components/developer.vue';
-import Footer from '@/components/Footer.vue';
-import AboutUs from '@/components/AboutUs.vue';
+import Header from '../components/Sections/Header.vue';
+import Features from '../components/Sections/Features.vue';
+import developer from '@/components/Sections/developer.vue';
+import Footer from '@/components/Sections/Footer.vue';
+import AboutUs from '@/components/Sections/AboutUs.vue';
 </script>
 
 <template>
