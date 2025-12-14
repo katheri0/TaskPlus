@@ -1,12 +1,12 @@
 <script setup>
 import TaskCard from '@/components/Tasks/TaskCard.vue';
-import Filter from '@/components/Tasks/Filter.vue';
+import Filter from '@/components/Filter.vue';
 import ModulWindow from '@/components/Modules/ModulWindow.vue';
 import AddTaskModul from '@/components/Modules/AddTaskModul.vue';
 import { useModulStore } from '@/stores/ModulStore';
 import { useTasksStore } from '@/stores/TasksStore';
 import EditTaskModul from '@/components/Modules/EditTaskModul.vue';
-import backBtn from '@/components/Tasks/backBtn.vue';
+import backBtn from '@/components/backBtn.vue';
 const store = useTasksStore();
 const ModulStore = useModulStore();
 
@@ -15,7 +15,7 @@ const ModulStore = useModulStore();
 </script>
 
 <template>
-    <backBtn />
+  <backBtn />
   <main class="">
     <div class="header">
       <div class="header-side">
@@ -28,8 +28,15 @@ const ModulStore = useModulStore();
       </div>
     </div>
 
-    <Filter />
-
+<Filter
+    :filter-value="store.filterBY"
+    :options="[
+        { label: 'To-Do', value: 'To-Do' },
+        { label: 'Done', value: 'Done' }
+    ]"
+    :on-select="store.setFilter"
+    :on-clear="() => store.setFilter('')"
+/>
     <div class="tasks">
       <taskCard v-for="(task, index) in store.filteredTasks" :key="index" :task="task" />
     </div>
@@ -86,8 +93,8 @@ const ModulStore = useModulStore();
     grid-template-columns: repeat(1, 1fr);
   }
 }
-main
-{
-  padding-top: 60px  !important;
+
+main {
+  padding-top: 60px !important;
 }
 </style>

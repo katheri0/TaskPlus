@@ -99,7 +99,6 @@ const tasks = reactive(loadFromLocalStorage('tasks', []))
         filterBY,
         editTaskId,
         editedTask,
-
         // functions
         setFilter,
         addTask,
