@@ -2,17 +2,17 @@
 import NoteCard from '@/components/Notes/NoteCard.vue';
 import Filter from '@/components/Filter.vue';
 import ModalWindow from '@/components/Modules/ModulWindow.vue';
-// import AddNoteModule from '@/components/Modules/AddNoteModule.vue';
-// import EditNoteModule from '@/components/Modules/EditNoteModule.vue';
+import EditNoteModul from '@/components/Modules/EditNoteModul.vue';
 import BackButton from '@/components/backBtn.vue';
 import { useModulStore } from '@/stores/ModulStore';
 import { useNotesStore } from '@/stores/NotesStore';
+import AddNoteModul from '@/components/Modules/AddNoteModul.vue';
 
 const notesStore = useNotesStore();
 const modalStore = useModulStore();
 </script>
 
-<template >
+<template>
   <BackButton />
 
   <main>
@@ -22,44 +22,31 @@ const modalStore = useModulStore();
       </div>
 
       <div class="header-side">
-        <button
-          type="button"
-          class="btn secondary"
-          @click="modalStore.openAddModule()"
-        >
+        <button type="button" class="btn secondary" @click="modalStore.openAddModule()">
           Add a Note
         </button>
       </div>
     </header>
 
-<Filter
-    :filter-value="notesStore.filterByReadingStatus"
-    :options="[
-        { label: 'Unread', value: 'unread' },
-        { label: 'Reading', value: 'reading' },
-        { label: 'Read', value: 'read' }
-    ]"
-    :on-select="notesStore.setFilterStatus"
-    :on-clear="() => notesStore.setFilterStatus('')"
-/>
+    <Filter :filter-value="notesStore.filterByReadingStatus" :options="[
+      { label: 'Unread', value: 'unread' },
+      { label: 'Reading', value: 'reading' },
+      { label: 'Read', value: 'read' }
+    ]" :on-select="notesStore.setFilterStatus" 
+    :on-clear="() => notesStore.setFilterStatus('')" />
     <section class="notes">
-      <NoteCard
-        v-for="note in notesStore.filteredNotes"
-        :key="note.id"
-        :note="note"
-      />
+      <NoteCard v-for="note in notesStore.filteredNotes" :key="note.id" :note="note" />
     </section>
 
     <ModalWindow v-if="modalStore.isActive">
-      <AddNoteModule v-if="modalStore.activeModule === 'add'" />
-      <EditNoteModule v-if="modalStore.activeModule === 'edit'" />
+      <AddNoteModul v-if="modalStore.activeModule === 'add'" />
+      <EditNoteModul v-if="modalStore.activeModule === 'edit'" />
     </ModalWindow>
   </main>
 </template>
 
 <style scoped>
-body 
-{
+body {
   background-color: #FFE45E;
 }
 
@@ -104,8 +91,8 @@ body
 main {
   padding-top: 60px;
 }
-body
-{
+
+body {
   background-color: #FFE45E;
 
 }

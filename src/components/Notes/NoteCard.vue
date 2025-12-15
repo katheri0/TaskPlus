@@ -102,7 +102,17 @@ const props = defineProps({
   cursor: pointer;
 }
 
-.Active {
+.Unread{
+  background-color: #FFD5D5;
+  color: #FF3D3D;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.Reading {
   background-color: #d5ffd8;
   color: #3dff4a;
   padding: 4px 10px;
@@ -112,9 +122,9 @@ const props = defineProps({
   cursor: pointer;
 }
 
-.Inactive {
-  background-color: #FFD5D5;
-  color: #FF3D3D;
+.Read {
+  background-color: #FFF4C8;
+  color: #FFC23D;
   padding: 4px 10px;
   border-radius: 10px;
   font-size: 14px;
@@ -138,7 +148,7 @@ span span {
   width: auto;
 }
 
-.task h3 {
+.note-card h3 {
   font-size: 20px;
   font-weight: 700;
   line-height: 21px;

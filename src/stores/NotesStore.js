@@ -19,13 +19,14 @@ export const useNotesStore = defineStore("notes", () => {
         filterByReadingStatus.value = status;
     }
 
-const filteredNotes = computed(() => {
-    if (!filterByReadingStatus.value) return notes;
+    const filteredNotes = computed(() => {
+        if (!filterByReadingStatus.value) return notes;
 
-    return notes.filter(
-        note => note.readingStatus === filterByReadingStatus.value
-    );
-});
+        return notes.filter(
+            note => note.status === filterByReadingStatus.value
+        );
+
+    });
 
     // ---------- CRUD ----------
     function addNote(newNote) {
@@ -69,7 +70,7 @@ const filteredNotes = computed(() => {
         const modalStore = useModulStore();
         modalStore.closeModule();
     }
-// filterByReadingStatus
+    // filterByReadingStatus
     function deleteNote(noteId) {
         const noteIndex = notes.findIndex(note => note.id === noteId);
         if (noteIndex === -1) return;
@@ -83,7 +84,7 @@ const filteredNotes = computed(() => {
 
         targetNote.completed = !targetNote.completed;
     }
-// filterBy 
+    // filterBy 
     // ---------- Helpers ----------
     function getPriorityClass(priorityText) {
         if (priorityText === "High priority") return "High-priority";
@@ -93,8 +94,9 @@ const filteredNotes = computed(() => {
     }
 
     function getStatusClass(statusText) {
-        if (statusText === "Active") return "Active";
-        if (statusText === "Inactive") return "Inactive";
+        if (statusText === "Reading") return "Reading";
+        if (statusText === "Unread") return "Unread";
+        if (statusText === "Read") return "Read";
         return "";
     }
 
