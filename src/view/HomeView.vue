@@ -23,7 +23,7 @@ import AboutUs from '@/components/Sections/AboutUs.vue';
 
         <p class="home__note">No Signup / Login — straight to work</p>
 
-        <RouterLink to="/notes" class="btn btn--primary" rel="nofollow">Try It Now </RouterLink>
+        <RouterLink to="/forward" class="btn btn--primary" rel="nofollow">Try It Now </RouterLink>
       </aside>
 
       <figure class="home__right" aria-hidden="true">
