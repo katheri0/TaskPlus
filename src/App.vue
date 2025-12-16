@@ -4,10 +4,10 @@ import { saveToLocalStorage } from '@/utils/storage'
 import { useTasksStore } from '@/stores/TasksStore';
 import { useRoute } from 'vue-router';
 import { useNotesStore } from './stores/NotesStore';
-const store = useTasksStore();
+const taskStore = useTasksStore();
 const notesStore = useNotesStore();
 
-store.$subscribe((mutation, state) => {
+taskStore.$subscribe((mutation, state) => {
   saveToLocalStorage('tasks' , state.tasks)
 })
 

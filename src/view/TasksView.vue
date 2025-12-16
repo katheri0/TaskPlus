@@ -7,7 +7,7 @@ import { useModulStore } from '@/stores/ModulStore';
 import { useTasksStore } from '@/stores/TasksStore';
 import EditTaskModul from '@/components/Modules/EditTaskModul.vue';
 import backBtn from '@/components/backBtn.vue';
-const store = useTasksStore();
+const taskStore = useTasksStore();
 const ModulStore = useModulStore();
 
 
@@ -29,16 +29,16 @@ const ModulStore = useModulStore();
     </div>
 
 <Filter
-    :filter-value="store.filterBY"
+    :filter-value="taskStore.filterBY"
     :options="[
         { label: 'To-Do', value: 'To-Do' },
         { label: 'Done', value: 'Done' }
     ]"
-    :on-select="store.setFilter"
-    :on-clear="() => store.setFilter('')"
+    :on-select="taskStore.setFilter"
+    :on-clear="() => taskStore.setFilter('')"
 />
     <div class="tasks">
-      <taskCard v-for="(task, index) in store.filteredTasks" :key="index" :task="task" />
+      <taskCard v-for="(task, index) in taskStore.filteredTasks" :key="index" :task="task" />
     </div>
 
 

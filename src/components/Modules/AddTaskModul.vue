@@ -1,6 +1,6 @@
 <script setup>
 import { useTasksStore } from '@/stores/TasksStore';
-const store = useTasksStore()
+const taskstore = useTasksStore()
 
 let newTask = { status: "Active", priorityStatus: "Med priority", completed: false }
 
@@ -15,7 +15,7 @@ let newTask = { status: "Active", priorityStatus: "Med priority", completed: fal
         <br>
         <label for="description">description*</label>
         <textarea v-model="newTask.description" name="description" rows="4" placeholder="Enter a description..." /><br />
-        <div class="btn-div"> <button @click="store.addTask(newTask)" class="btn gray">Add Task</button></div>
+        <div class="btn-div"> <button @click="taskstore.addTask(newTask)" class="btn gray">Add Task</button></div>
 
     </div>
 </template>

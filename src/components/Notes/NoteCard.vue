@@ -146,6 +146,8 @@ span span {
   border-radius: 12px;
   position: relative;
   width: auto;
+  min-height: 185px;
+
 }
 
 .note-card h3 {
@@ -161,32 +163,27 @@ span span {
   gap: 10px;
 }
 
-.task h3>span:first-child {
+.note-card  h3>span:first-child {
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.task h3>span:last-child {
+.note-card  h3>span:last-child {
   display: flex;
   gap: 6px;
   white-space: nowrap;
   flex-shrink: 0;
 }
 
-.task p {
+.note-card  p {
   margin-top: 24px;
-  margin-bottom: 12px;
   font-size: 16px;
   font-weight: 400;
   line-height: 16px;
   letter-spacing: 0em;
   text-align: left;
+  margin-bottom: 54px;
 }
 
 
-.tasks {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
 </style>

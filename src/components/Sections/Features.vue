@@ -20,6 +20,7 @@ h1
     color: black;
 }
 .mockup {
+    margin: 20px;
     height: 600px;
     width: 950px;
     background: white;

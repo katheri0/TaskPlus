@@ -192,6 +192,7 @@ import AboutUs from '@/components/Sections/AboutUs.vue';
 
   .mockup {
     order: -1;
-  }
+    justify-content: center;
+    }
 }
 </style>

@@ -1,6 +1,6 @@
 <script setup>
 import { useTasksStore } from '@/stores/TasksStore';
-const store = useTasksStore()
+const taskStore = useTasksStore()
 const props =defineProps(['task'])
 </script>
 
@@ -9,8 +9,8 @@ const props =defineProps(['task'])
         <h3>
           <span>{{ task.name }} </span>
           <span>
-            <span :class="store.getStatusClass(task.status)"><b>{{ task.status }}</b></span>
-            <span :class="store.getStatusClassPriority(task.priorityStatus)"><b>{{ task.priorityStatus }}</b></span>
+            <span :class="taskStore.getStatusClass(task.status)"><b>{{ task.status }}</b></span>
+            <span :class="taskStore.getStatusClassPriority(task.priorityStatus)"><b>{{ task.priorityStatus }}</b></span>
           </span>
         </h3>
 
@@ -18,12 +18,12 @@ const props =defineProps(['task'])
           {{ task.description }}
         </p>
           <span>
-            <button @click="store.deleteTask(task.id)" class="Delete-btn"><b>Delete</b></button>
+            <button @click="taskStore.deleteTask(task.id)" class="Delete-btn"><b>Delete</b></button>
 
-            <button @click="store.startEditTask(task.id)"  class="Edit-btn"><b>Edit</b></button>
+            <button @click="taskStore.startEditTask(task.id)"  class="Edit-btn"><b>Edit</b></button>
           </span>
         <div class="task-check">
-          <input @click="store.toggleCompleted(task.id)" type="checkbox" :checked="task.completed" />
+          <input @click="taskStore.toggleCompleted(task.id)" type="checkbox" :checked="task.completed" />
           <label>
             {{  task.completed? "Done":"To-Do"}}
           </label>

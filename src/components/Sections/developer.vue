@@ -132,10 +132,12 @@ span {
 .container {
     display: flex;
     justify-content: center;
-    padding-top: 40px;
+    padding-top: 20px;
 }
 
 .profileCard {
+        margin: 20px;
+
     width: 950px;
     background: white;
     padding: 24px;
@@ -201,7 +203,6 @@ span {
 }
 
 .imageFrame {
-    border: 3px solid #c2c2c2;
     border-radius: 14px;
     width: 360px;
     height: 360px;

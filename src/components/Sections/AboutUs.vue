@@ -37,6 +37,7 @@ span {
 }
 
 .mockup {
+    margin: 20px;
     height: 550px;
     width: 950px;
     background: white;
@@ -46,7 +47,6 @@ span {
 }
 
 .mockup__image {
-    border: 4px solid #C2C2C2;
     width: 42%;
     height: auto;
     display: block;

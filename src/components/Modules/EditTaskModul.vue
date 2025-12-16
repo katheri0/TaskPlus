@@ -1,6 +1,6 @@
 <script setup>
 import { useTasksStore } from '@/stores/TasksStore';
-const store = useTasksStore()
+const tasksStore = useTasksStore()
 
 </script>
 
@@ -9,12 +9,12 @@ const store = useTasksStore()
         <h3>Edit a task</h3>
         <br>
         <label for="title">title*</label>
-        <input v-model="store.editedTask.name" type="text" placeholder="Enter a title..."><br />
+        <input v-model="tasksStore.editedTask.name" type="text" placeholder="Enter a title..."><br />
         <br>
         <label for="description">description*</label>
-        <textarea  v-model="store.editedTask.description" rows="4" placeholder="Enter a description..." /><br />
+        <textarea  v-model="tasksStore.editedTask.description" rows="4" placeholder="Enter a description..." /><br />
     <div class="btn-div">
-      <button @click="store.updateTask()" class="btn gray">
+      <button @click="tasksStore.updateTask()" class="btn gray">
         Save Changes
       </button>
     </div>
