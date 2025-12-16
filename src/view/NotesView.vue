@@ -29,9 +29,9 @@ const modalStore = useModulStore();
     </header>
 
     <Filter :filter-value="notesStore.filterByReadingStatus" :options="[
-      { label: 'Unread', value: 'unread' },
-      { label: 'Reading', value: 'reading' },
-      { label: 'Read', value: 'read' }
+      { label: 'Unread', value: 'Unread' },
+      { label: 'Reading', value: 'Reading' },
+      { label: 'Read', value: 'Read' }
     ]" :on-select="notesStore.setFilterStatus" 
     :on-clear="() => notesStore.setFilterStatus('')" />
     <section class="notes">
