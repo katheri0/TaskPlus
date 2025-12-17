@@ -70,7 +70,7 @@ export const useNotesStore = defineStore("notes", () => {
         const modalStore = useModulStore();
         modalStore.closeModule();
     }
-    // filterByReadingStatus
+    
     function deleteNote(noteId) {
         const noteIndex = notes.findIndex(note => note.id === noteId);
         if (noteIndex === -1) return;
@@ -84,7 +84,37 @@ export const useNotesStore = defineStore("notes", () => {
 
         targetNote.completed = !targetNote.completed;
     }
-    // filterBy 
+
+        function toggleStatus(id) {
+        notes.forEach(note => {
+            if (note.id === id) {
+                if (note.status === "Read") {
+                    note.status = "Reading"
+                }
+                else if (note.status === "Reading") {
+                    note.status = "Unread"
+                }
+                else {
+                    note.status = "Read"
+                }
+            }
+        })
+    }
+    function togglPriorityeStatus(id) {
+        notes.forEach(note => {
+            if (note.id === id) {
+                if (note.priorityStatus === "High priority") {
+                    note.priorityStatus = "Med priority"
+                }
+                else if (note.priorityStatus === "Med priority") {
+                    note.priorityStatus = "Low priority"
+                }
+                else {
+                    note.priorityStatus = "High priority"
+                }
+            }
+        })
+    }
     // ---------- Helpers ----------
     function getPriorityClass(priorityText) {
         if (priorityText === "High priority") return "High-priority";
@@ -117,6 +147,8 @@ export const useNotesStore = defineStore("notes", () => {
         toggleArchived,
         getPriorityClass,
         getStatusClass,
+        toggleStatus,
+        togglPriorityeStatus,
 
         // computed
         filteredNotes,

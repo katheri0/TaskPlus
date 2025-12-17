@@ -9,11 +9,10 @@ const props =defineProps(['task'])
         <h3>
           <span>{{ task.name }} </span>
           <span>
-            <span :class="taskStore.getStatusClass(task.status)"><b>{{ task.status }}</b></span>
-            <span :class="taskStore.getStatusClassPriority(task.priorityStatus)"><b>{{ task.priorityStatus }}</b></span>
+            <span @click="taskStore.toggleStatus(task.id)" :class="taskStore.getStatusClass(task.status)"><b>{{ task.status }}</b></span>
+            <span @click="taskStore.togglPriorityeStatus(task.id)"  :class="taskStore.getStatusClassPriority(task.priorityStatus)"><b>{{ task.priorityStatus }}</b></span>
           </span>
         </h3>
-
         <p>
           {{ task.description }}
         </p>

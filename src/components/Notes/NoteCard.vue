@@ -19,11 +19,11 @@ const props = defineProps({
       </span>
 
       <span ">
-        <span :class="notesStore.getStatusClass(note.status)">
+        <span @click="notesStore.toggleStatus(note.id)" :class="notesStore.getStatusClass(note.status)">
           <b>{{ note.status }}</b>
         </span>
 
-        <span :class="notesStore.getPriorityClass(note.priorityStatus)">
+        <span @click="notesStore.togglPriorityeStatus(note.id)"  :class="notesStore.getPriorityClass(note.priorityStatus)">
           <b>{{ note.priorityStatus }}</b>
         </span>
       </span>

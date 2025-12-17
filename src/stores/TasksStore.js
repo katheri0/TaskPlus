@@ -3,9 +3,8 @@ import { reactive, computed, ref } from "vue";
 import { useModulStore } from "./ModulStore";
 import { loadFromLocalStorage } from '@/utils/storage'
 
-
 export const useTasksStore = defineStore('tasks', () => {
-const tasks = reactive(loadFromLocalStorage('tasks', []))
+    const tasks = reactive(loadFromLocalStorage('tasks', []))
     let filterBY = ref("");
     const editedTask = ref({
         name: "",
@@ -78,6 +77,33 @@ const tasks = reactive(loadFromLocalStorage('tasks', []))
             }
         })
     }
+    function toggleStatus(id) {
+        tasks.forEach(task => {
+            if (task.id === id) {
+                if (task.status === "Active") {
+                    task.status = "Inactive"
+                }
+                else {
+                    task.status = "Active"
+                }
+            }
+        })
+    }
+    function togglPriorityeStatus(id) {
+        tasks.forEach(task => {
+            if (task.id === id) {
+                if (task.priorityStatus === "High priority") {
+                    task.priorityStatus = "Med priority"
+                }
+                else if (task.priorityStatus === "Med priority") {
+                    task.priorityStatus = "Low priority"
+                }
+                else {
+                    task.priorityStatus = "High priority"
+                }
+            }
+        })
+    }
     // ---------- Helpers ----------
     function getStatusClassPriority(statusText) {
         if (statusText === 'High priority') return 'High-priority'
@@ -108,7 +134,8 @@ const tasks = reactive(loadFromLocalStorage('tasks', []))
         startEditTask,
         updateTask,
         deleteTask,
-         
+        toggleStatus,
+        togglPriorityeStatus,
         //computed
         filteredTasks,
     }
