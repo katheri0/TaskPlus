@@ -6,6 +6,7 @@ import { loadFromLocalStorage } from '@/utils/storage'
 export const useTasksStore = defineStore('tasks', () => {
     const tasks = reactive(loadFromLocalStorage('tasks', []))
     let filterBY = ref("");
+
     const editedTask = ref({
         name: "",
         description: ""
@@ -15,6 +16,8 @@ export const useTasksStore = defineStore('tasks', () => {
     function setFilter(value) {
         filterBY.value = value;
     }
+
+  
     const filteredTasks = computed(() => {
         switch (filterBY.value) {
             case 'To-Do':
@@ -136,6 +139,7 @@ export const useTasksStore = defineStore('tasks', () => {
         deleteTask,
         toggleStatus,
         togglPriorityeStatus,
+
         //computed
         filteredTasks,
     }

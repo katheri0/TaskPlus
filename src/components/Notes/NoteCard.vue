@@ -1,14 +1,23 @@
 <script setup>
 import { useNotesStore } from '@/stores/NotesStore';
+import { ref, computed } from 'vue';
 
 const notesStore = useNotesStore();
 
-const props = defineProps({
-  note: {
-    type: Object,
-    required: true,
-  },
-});
+const props = defineProps({ note: { type: Object, required: true } });
+const SHOWFDes = ref(false);
+const togshowFdes = () => {
+  SHOWFDes.value = !SHOWFDes.value;
+}
+
+const truncatedDes = computed(() => {
+  let description = props.note.description;
+  if (!SHOWFDes.value) {
+    description = description.substring(0, 90) + "...";
+  }
+  return description;
+})
+
 </script>
 
 <template>
@@ -19,20 +28,21 @@ const props = defineProps({
       </span>
 
       <span ">
-        <span @click="notesStore.toggleStatus(note.id)" :class="notesStore.getStatusClass(note.status)">
-          <b>{{ note.status }}</b>
-        </span>
+        <span @click=" notesStore.toggleStatus(note.id)" :class="notesStore.getStatusClass(note.status)">
+        <b>{{ note.status }}</b>
+      </span>
 
-        <span @click="notesStore.togglPriorityeStatus(note.id)"  :class="notesStore.getPriorityClass(note.priorityStatus)">
-          <b>{{ note.priorityStatus }}</b>
-        </span>
+      <span @click="notesStore.togglPriorityeStatus(note.id)" :class="notesStore.getPriorityClass(note.priorityStatus)">
+        <b>{{ note.priorityStatus }}</b>
+      </span>
       </span>
     </h3>
-
-    <p>
-      {{ note.description }}
+    <p @click="togshowFdes()">
+      {{ truncatedDes }}
     </p>
-
+    <span @click="togshowFdes()">
+      {{ SHOWFDes ? " Less " : "More" }}
+    </span>
     <div>
       <button class="Delete-btn" @click="notesStore.deleteNote(note.id)">
         <b>Delete</b>
@@ -41,6 +51,7 @@ const props = defineProps({
       <button class="Edit-btn" @click="notesStore.startEditNote(note.id)">
         <b>Edit</b>
       </button>
+        <b class="view-btn"> <a href="/Note-Viewing">View</a></b>
     </div>
   </div>
 </template>
@@ -56,6 +67,22 @@ const props = defineProps({
   display: inline-block;
   border: 2px solid #2F60C4;
   cursor: pointer;
+  margin: 3px;
+}
+
+
+.view-btn  a{
+  background-color: #f7ff8b;
+  color: #e0d100;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  display: inline-block;
+  border: 2px solid #ccd000;
+  cursor: pointer;
+  margin: 3px;
+  text-decoration: none;
+
 }
 
 .Delete-btn {
@@ -102,7 +129,7 @@ const props = defineProps({
   cursor: pointer;
 }
 
-.Unread{
+.Unread {
   background-color: #FFD5D5;
   color: #FF3D3D;
   padding: 4px 10px;
@@ -163,19 +190,19 @@ span span {
   gap: 10px;
 }
 
-.note-card  h3>span:first-child {
+.note-card h3>span:first-child {
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.note-card  h3>span:last-child {
+.note-card h3>span:last-child {
   display: flex;
   gap: 6px;
   white-space: nowrap;
   flex-shrink: 0;
 }
 
-.note-card  p {
+.note-card p {
   margin-top: 24px;
   font-size: 16px;
   font-weight: 400;
@@ -184,6 +211,4 @@ span span {
   text-align: left;
   margin-bottom: 54px;
 }
-
-
 </style>

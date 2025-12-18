@@ -1,38 +1,58 @@
 <script setup>
 import { useTasksStore } from '@/stores/TasksStore';
+import { ref, computed } from 'vue';
 const taskStore = useTasksStore()
-const props =defineProps(['task'])
+const props = defineProps(['task'])
+
+const SHOWFDes = ref(false);
+const togshowFdes = () => {
+  SHOWFDes.value = !SHOWFDes.value;
+}
+
+const truncatedDes = computed(() => {
+  let description = props.task.description;
+  if (!SHOWFDes.value) {
+    description = description.substring(0, 90) + "...";
+  }
+  return description;
+})
+
 </script>
 
 <template>
- <div  class="task">
-        <h3>
-          <span>{{ task.name }} </span>
-          <span>
-            <span @click="taskStore.toggleStatus(task.id)" :class="taskStore.getStatusClass(task.status)"><b>{{ task.status }}</b></span>
-            <span @click="taskStore.togglPriorityeStatus(task.id)"  :class="taskStore.getStatusClassPriority(task.priorityStatus)"><b>{{ task.priorityStatus }}</b></span>
-          </span>
-        </h3>
-        <p>
-          {{ task.description }}
-        </p>
-          <span>
-            <button @click="taskStore.deleteTask(task.id)" class="Delete-btn"><b>Delete</b></button>
+  <div class="task">
+    <h3>
+      <span>{{ task.name }} </span>
+      <span>
+        <span @click="taskStore.toggleStatus(task.id)" :class="taskStore.getStatusClass(task.status)"><b>{{ task.status
+        }}</b></span>
+        <span @click="taskStore.togglPriorityeStatus(task.id)"
+          :class="taskStore.getStatusClassPriority(task.priorityStatus)"><b>{{ task.priorityStatus }}</b></span>
+      </span>
+    </h3>
+    <p @click="togshowFdes()">
+      {{ truncatedDes }}
+    </p>
+    <span @click="togshowFdes()">
+      {{ SHOWFDes ? " Less " : "More" }}
+    </span>
 
-            <button @click="taskStore.startEditTask(task.id)"  class="Edit-btn"><b>Edit</b></button>
-          </span>
-        <div class="task-check">
-          <input @click="taskStore.toggleCompleted(task.id)" type="checkbox" :checked="task.completed" />
-          <label>
-            {{  task.completed? "Done":"To-Do"}}
-          </label>
-        </div>
-      </div>
+    <span>
+      <button @click="taskStore.deleteTask(task.id)" class="Delete-btn"><b>Delete</b></button>
+
+      <button @click="taskStore.startEditTask(task.id)" class="Edit-btn"><b>Edit</b></button>
+    </span>
+    <div class="task-check">
+      <input @click="taskStore.toggleCompleted(task.id)" type="checkbox" :checked="task.completed" />
+      <label>
+        {{ task.completed ? "Done" : "To-Do" }}
+      </label>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-
- .Edit-btn  {
+.Edit-btn {
   background-color: #D6D5FF;
   color: #2F60C4;
   padding: 4px 10px;
@@ -41,7 +61,7 @@ const props =defineProps(['task'])
   display: inline-block;
   border: 2px solid #2F60C4;
   cursor: pointer;
-} 
+}
 
 .Delete-btn {
   background-color: #FFD5D5;
@@ -53,10 +73,9 @@ const props =defineProps(['task'])
   border: 2px solid #FF3D3D;
   margin: 3px;
   cursor: pointer;
-} 
+}
 
-.High-priority
-{
+.High-priority {
   background-color: #D6D5FF;
   color: #403DFF;
   padding: 4px 10px;
@@ -66,8 +85,8 @@ const props =defineProps(['task'])
   cursor: pointer;
 
 }
-.Med-priority
-{
+
+.Med-priority {
   background-color: #FFF4C8;
   color: #FFC23D;
   padding: 4px 10px;
@@ -77,8 +96,8 @@ const props =defineProps(['task'])
   cursor: pointer;
 
 }
-.Low-priority
-{
+
+.Low-priority {
   background-color: #FFD5D5;
   color: #FF3D3D;
   padding: 4px 10px;
@@ -87,18 +106,18 @@ const props =defineProps(['task'])
   display: inline-block;
   cursor: pointer;
 }
-.Active
-{
+
+.Active {
   background-color: #d5ffd8;
   color: #3dff4a;
   padding: 4px 10px;
   border-radius: 10px;
   font-size: 14px;
   display: inline-block;
-    cursor: pointer;
+  cursor: pointer;
 }
-.Inactive
-{
+
+.Inactive {
   background-color: #FFD5D5;
   color: #FF3D3D;
   padding: 4px 10px;
@@ -112,6 +131,7 @@ span span {
   padding: 5px;
 
 }
+
 .task {
   display: flex;
   flex-direction: column;
@@ -203,11 +223,10 @@ span span {
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
+
 .tasks {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
-
-
 </style>
