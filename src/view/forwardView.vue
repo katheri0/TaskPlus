@@ -1,10 +1,10 @@
-<script>
-
+<script setup>
+import BackBtn from '@/components/backBtn.vue';
 </script>
 
 <template>
     <link href="https://fonts.cdnfonts.com/css/rage-italic" rel="stylesheet">
-
+    <BackBtn />
     <div id="features">
         <h1>Welcome To Task/Note Manager</h1>
         <div class="warp">

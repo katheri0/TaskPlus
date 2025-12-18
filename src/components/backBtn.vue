@@ -7,11 +7,11 @@ function goBack() {
 <template>
   <button
     type="button"
-    class="btn secondary back-btn"
+    class="btn  back-btn"
     @click="goBack"
     aria-label="العودة إلى الصفحة السابقة"
   >
-    ← رجوع
+    ← back
   </button>
 </template>
 

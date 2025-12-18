@@ -9,7 +9,7 @@ const router = createRouter({
   routes: [
     { path: '/', name: 'Home', component: HomeView },
     { path: '/tasks', name: 'tasks', component: TaskView },
-    { path: '/notes', name: 'Notes', component: NotesView },
+    { path: '/notes', name: 'notes', component: NotesView },
     { path: '/forward', name: 'forward', component: forwardView },
     { path: '/:catchAll(.*)', name: 'not-found', component: notFoundView }
   ]

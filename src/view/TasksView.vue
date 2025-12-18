@@ -7,6 +7,7 @@ import { useModulStore } from '@/stores/ModulStore';
 import { useTasksStore } from '@/stores/TasksStore';
 import EditTaskModul from '@/components/Modules/EditTaskModul.vue';
 import backBtn from '@/components/backBtn.vue';
+import SwitchBtn from '@/components/switchBtn.vue';
 const taskStore = useTasksStore();
 const ModulStore = useModulStore();
 
@@ -16,7 +17,7 @@ const ModulStore = useModulStore();
 
 <template>
   <backBtn />
-  <main class="">
+  <main >
     <div class="header">
       <div class="header-side">
         <h1>
@@ -27,16 +28,13 @@ const ModulStore = useModulStore();
         <button type="button" @click="ModulStore.openAddModule()" class="btn secondary">Add a Task</button>
       </div>
     </div>
+        <br>
+    <SwitchBtn />
 
-<Filter
-    :filter-value="taskStore.filterBY"
-    :options="[
-        { label: 'To-Do', value: 'To-Do' },
-        { label: 'Done', value: 'Done' }
-    ]"
-    :on-select="taskStore.setFilter"
-    :on-clear="() => taskStore.setFilter('')"
-/>
+    <Filter :filter-value="taskStore.filterBY" :options="[
+      { label: 'To-Do', value: 'To-Do' },
+      { label: 'Done', value: 'Done' }
+    ]" :on-select="taskStore.setFilter" :on-clear="() => taskStore.setFilter('')" />
     <div class="tasks">
       <taskCard v-for="(task, index) in taskStore.filteredTasks" :key="index" :task="task" />
     </div>

@@ -7,7 +7,7 @@ import BackButton from '@/components/backBtn.vue';
 import { useModulStore } from '@/stores/ModulStore';
 import { useNotesStore } from '@/stores/NotesStore';
 import AddNoteModul from '@/components/Modules/AddNoteModul.vue';
-
+import SwitchBtn from '@/components/switchBtn.vue';
 const notesStore = useNotesStore();
 const modalStore = useModulStore();
 </script>
@@ -18,16 +18,16 @@ const modalStore = useModulStore();
   <main>
     <header class="header">
       <div class="header-side">
-        <h1>Notes Manager</h1>
+        <h1>TaskPlus-Notes Manager</h1>
       </div>
-
       <div class="header-side">
         <button type="button" class="btn secondary" @click="modalStore.openAddModule()">
           Add a Note
         </button>
       </div>
-    </header>
-
+    </header> 
+    <br>
+    <SwitchBtn />
     <Filter :filter-value="notesStore.filterByReadingStatus" :options="[
       { label: 'Unread', value: 'Unread' },
       { label: 'Reading', value: 'Reading' },
@@ -51,7 +51,6 @@ body {
 }
 
 .header {
-  margin: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -90,11 +89,6 @@ body {
 }
 
 main {
-  padding-top: 60px;
-}
-
-body {
-  background-color: #FFE45E;
-
+  padding-top: 60px !important;
 }
 </style>
