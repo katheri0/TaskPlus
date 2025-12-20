@@ -89,7 +89,7 @@ p {
 h1 {
     text-align: center;
     color: white;
-    padding-bottom: 100px;
+    padding-bottom: 35px;
     padding-top: 67px;
 
 }

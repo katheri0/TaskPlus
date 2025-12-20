@@ -25,17 +25,18 @@ const truncatedDes = computed(() => {
       <span>{{ task.name }} </span>
       <span>
         <span @click="taskStore.toggleStatus(task.id)" :class="taskStore.getStatusClass(task.status)"><b>{{ task.status
-        }}</b></span>
+            }}</b></span>
         <span @click="taskStore.togglPriorityeStatus(task.id)"
           :class="taskStore.getStatusClassPriority(task.priorityStatus)"><b>{{ task.priorityStatus }}</b></span>
       </span>
     </h3>
-    <p @click="togshowFdes()">
+    <p >
       {{ truncatedDes }}
+      <span class="more" @click="togshowFdes()">
+        {{ SHOWFDes ? " Less " : "More" }}
+      </span>
     </p>
-    <span @click="togshowFdes()">
-      {{ SHOWFDes ? " Less " : "More" }}
-    </span>
+
 
     <span>
       <button @click="taskStore.deleteTask(task.id)" class="Delete-btn"><b>Delete</b></button>
@@ -130,6 +131,11 @@ const truncatedDes = computed(() => {
 span span {
   padding: 5px;
 
+}
+
+.more {
+  cursor: pointer;
+  color: rgb(106, 106, 106);
 }
 
 .task {

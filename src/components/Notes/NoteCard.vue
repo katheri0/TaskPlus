@@ -1,11 +1,11 @@
 <script setup>
 import { useNotesStore } from '@/stores/NotesStore';
 import { ref, computed } from 'vue';
-
+import { RouterLink } from 'vue-router';
 const notesStore = useNotesStore();
-
 const props = defineProps({ note: { type: Object, required: true } });
 const SHOWFDes = ref(false);
+
 const togshowFdes = () => {
   SHOWFDes.value = !SHOWFDes.value;
 }
@@ -37,12 +37,14 @@ const truncatedDes = computed(() => {
       </span>
       </span>
     </h3>
-    <p @click="togshowFdes()">
+    <p>
       {{ truncatedDes }}
+
+      <span class="more" @click="togshowFdes()">
+        {{ SHOWFDes ? " Less " : "More" }}
+      </span>
     </p>
-    <span @click="togshowFdes()">
-      {{ SHOWFDes ? " Less " : "More" }}
-    </span>
+
     <div>
       <button class="Delete-btn" @click="notesStore.deleteNote(note.id)">
         <b>Delete</b>
@@ -51,7 +53,9 @@ const truncatedDes = computed(() => {
       <button class="Edit-btn" @click="notesStore.startEditNote(note.id)">
         <b>Edit</b>
       </button>
-        <b class="view-btn"> <a href="/Note-Viewing">View</a></b>
+      <b class="view-btn">
+        <RouterLink :to="{ name: 'NoteViewing', params: { id: note.id } }">View</RouterLink>
+      </b>
     </div>
   </div>
 </template>
@@ -71,7 +75,7 @@ const truncatedDes = computed(() => {
 }
 
 
-.view-btn  a{
+.view-btn a {
   background-color: #f7ff8b;
   color: #e0d100;
   padding: 4px 10px;
@@ -82,7 +86,6 @@ const truncatedDes = computed(() => {
   cursor: pointer;
   margin: 3px;
   text-decoration: none;
-
 }
 
 .Delete-btn {
@@ -127,6 +130,11 @@ const truncatedDes = computed(() => {
   font-size: 14px;
   display: inline-block;
   cursor: pointer;
+}
+
+.more {
+  cursor: pointer;
+  color: rgb(106, 106, 106);
 }
 
 .Unread {

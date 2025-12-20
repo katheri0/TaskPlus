@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { reactive, computed, ref } from "vue";
 import { useModulStore } from "./ModulStore";
 import { loadFromLocalStorage } from "@/utils/storage";
-
+// id
 export const useNotesStore = defineStore("notes", () => {
     // ---------- State ----------
     const notes = reactive(loadFromLocalStorage("notes", []));
@@ -27,6 +27,11 @@ export const useNotesStore = defineStore("notes", () => {
         );
 
     });
+
+    function getNoteById(noteId) {
+        return notes.find(note => note.id === Number(noteId))
+    }
+
 
     // ---------- CRUD ----------
     function addNote(newNote) {
@@ -70,7 +75,7 @@ export const useNotesStore = defineStore("notes", () => {
         const modalStore = useModulStore();
         modalStore.closeModule();
     }
-    
+
     function deleteNote(noteId) {
         const noteIndex = notes.findIndex(note => note.id === noteId);
         if (noteIndex === -1) return;
@@ -85,7 +90,7 @@ export const useNotesStore = defineStore("notes", () => {
         targetNote.completed = !targetNote.completed;
     }
 
-        function toggleStatus(id) {
+    function toggleStatus(id) {
         notes.forEach(note => {
             if (note.id === id) {
                 if (note.status === "Read") {
@@ -152,5 +157,6 @@ export const useNotesStore = defineStore("notes", () => {
 
         // computed
         filteredNotes,
+        getNoteById,
     };
 });

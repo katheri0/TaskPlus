@@ -12,7 +12,7 @@ const router = createRouter({
     { path: '/tasks', name: 'tasks', component: TaskView },
     { path: '/notes', name: 'notes', component: NotesView },
     { path: '/forward', name: 'forward', component: forwardView },
-    { path: '/Note-Viewing/:id', name: 'NoteViewing', component: NoteView },
+    { path: '/NoteViewing/:id', name: 'NoteViewing', component: NoteView },
     { path: '/:catchAll(.*)', name: 'not-found', component: notFoundView }
   ]
 });
