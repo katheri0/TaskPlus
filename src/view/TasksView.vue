@@ -7,7 +7,7 @@ import { useModulStore } from '@/stores/ModulStore';
 import { useTasksStore } from '@/stores/TasksStore';
 import EditTaskModul from '@/components/Modules/EditTaskModul.vue';
 import backBtn from '@/components/backBtn.vue';
-import SwitchBtn from '@/components/switchBtn.vue';
+import SwitchBtn from '@/components/SwitchBtn.vue';
 const taskStore = useTasksStore();
 const ModulStore = useModulStore();
 
@@ -77,7 +77,6 @@ const ModulStore = useModulStore();
 .header .header-side .secondary {
   margin-left: 12px;
 }
-
 
 
 .tasks {

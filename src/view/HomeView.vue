@@ -87,6 +87,10 @@ import AboutUs from '@/components/Sections/AboutUs.vue';
   background: var(--bg);
   padding: 28px 0;
 }
+html {
+  scroll-behavior: smooth;
+}
+
 
 .home__container {
   max-width: 1200px;

@@ -35,6 +35,10 @@ span {
     color: black;
     font-size: 24px;
 }
+html {
+  scroll-behavior: smooth;
+}
+
 
 .mockup {
     margin: 20px;

@@ -74,7 +74,6 @@
 
 
 <style scoped>
-
 /* -------- LEFT SIDE (UX / FIGMA / XD) -------- */
 
 .toolsLayout {
@@ -136,8 +135,7 @@ span {
 }
 
 .profileCard {
-        margin: 20px;
-
+    margin: 20px;
     width: 950px;
     background: white;
     padding: 24px;
@@ -233,5 +231,4 @@ span {
     margin-top: 14px;
     font-size: 16px;
 }
-
 </style>

@@ -39,7 +39,6 @@
 
 .not-found__icon {
     font-size: 3rem;
-    color: var(--secondary-color);
     margin-bottom: 1.5rem;
 }
 
@@ -58,7 +57,6 @@
 .not-found__description {
     margin-top: 0.75rem;
     margin-bottom: 2rem;
-    color: var(--gray-color);
 }
 
 .not-found__action {
@@ -73,7 +71,5 @@
     border-radius: 24px;
 }
 
-.not-found__description {
-    color: var(--gray-color);
-}
+
 </style>

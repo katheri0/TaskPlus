@@ -8,11 +8,11 @@ const taskStore = useTasksStore();
 const notesStore = useNotesStore();
 
 taskStore.$subscribe((mutation, state) => {
-  saveToLocalStorage('tasks' , state.tasks)
+  saveToLocalStorage('tasks', state.tasks)
 })
 
 notesStore.$subscribe((mutation, state) => {
-  saveToLocalStorage('notes' , state.notes)
+  saveToLocalStorage('notes', state.notes)
 })
 
 
