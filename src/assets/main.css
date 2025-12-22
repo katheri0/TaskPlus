@@ -8,8 +8,7 @@
 
 body {
   background-color: var(--primary-color);
-  color: #fff;
-  height: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   padding: 20px;
 }
 
@@ -34,6 +33,7 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 .btn.primary {
   background-color: var(--primary-color);
   color: var(--white-color);
@@ -57,6 +57,6 @@ body {
 
 
 .badge.selected {
-    background-color: #E42C5F;
-    color: var(--white-color);
+  background-color: #E42C5F;
+  color: var(--white-color);
 }

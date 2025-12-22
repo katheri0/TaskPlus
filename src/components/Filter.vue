@@ -70,7 +70,7 @@ defineProps({
 
 .badge {
     padding: 8px 7px;
-    background-color: #dddddd;
+    background-color: #ffffff;
     color: black;
     font-size: 14px;
     font-weight: 400;

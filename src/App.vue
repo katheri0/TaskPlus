@@ -2,7 +2,6 @@
 import { RouterView } from 'vue-router';
 import { saveToLocalStorage } from '@/utils/storage'
 import { useTasksStore } from '@/stores/TasksStore';
-import { useRoute } from 'vue-router';
 import { useNotesStore } from './stores/NotesStore';
 const taskStore = useTasksStore();
 const notesStore = useNotesStore();
@@ -18,8 +17,11 @@ notesStore.$subscribe((mutation, state) => {
 
 </script>
 <template>
-  <RouterView />
+    <RouterView />
 </template>
 
 
-<style scoped></style>
+<style scoped>
+
+
+</style>

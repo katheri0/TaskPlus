@@ -42,7 +42,10 @@ import BackBtn from '@/components/backBtn.vue';
     text-decoration: none;
 
 }
-
+body
+{
+    background-image: url("/src/assets/images/Choice-component.svg");
+}
 .note-btn {
     background-color: #FFE45E;
     color: #FF6392;

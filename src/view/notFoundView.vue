@@ -29,10 +29,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--primary-color);
+    background-color: #9EBEF1;
     color: var(--white-color);
 }
-
+body
+{
+    background-color: #9EBEF1;
+}
 .not-found__content {
     text-align: center;
 }
