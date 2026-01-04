@@ -109,8 +109,8 @@ const truncatedDes = computed(() => {
 }
 
 .Active {
-  background-color: #d5ffd8;
-  color: #3dff4a;
+  background-color: #D5FFD8;
+  color: #3DFF4A;
   padding: 4px 10px;
   border-radius: 10px;
   font-size: 14px;

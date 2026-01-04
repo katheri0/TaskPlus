@@ -18,6 +18,11 @@ body {
   padding-inline: 1rem;
 }
 
+html
+{
+  scroll-behavior: smooth;
+}
+
 .btn {
   border-radius: 8px;
   height: 38px;
