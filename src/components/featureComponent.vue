@@ -90,7 +90,7 @@
     background-color: #ffffff;
     border-radius: 14px;
     padding: 1.8rem 1.4rem;
-    box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.18);
+    box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.13);
     text-align: center;
 }
 
@@ -155,7 +155,6 @@
     line-height: 1.4;
     color: #222;
 }
-
 /* Future feature */
 .future-feature {
     margin-top: 2rem;
@@ -163,7 +162,7 @@
     border-radius: 16px;
     padding: 2rem;
     text-align: center;
-    box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.18);
+    box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.13);
     width: 700px;
 }
 

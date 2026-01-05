@@ -1,59 +1,58 @@
 <script setup>
-
+import TaskCard from '../TaskCard.vue';
+import NoteCard from '../NoteCard.vue';
 </script>
+
 <template>
-<section class="home">
-      <div class="home__container">
-        <aside class="home__left">
-          <h1 class="home__title">
-            Level Up<br />
-            <span class="home__with">With</span><br />
-            <span class="home__brand">TaskPlus</span>
-          </h1>
+  <section class="home">
+    <div class="home__container">
+      <aside class="home__left">
+        <h1 class="home__title">
+          Level Up<br />
+          <span class="home__with">With</span><br />
+          <span class="home__brand">TaskPlus</span>
+        </h1>
 
-          <p class="home__subtitle">Task/Note Manager</p>
+        <p class="home__subtitle">Task/Note Manager</p>
 
-          <p class="home__note">No Signup / Login — straight to work</p>
+        <p class="home__note">No Signup / Login — straight to work</p>
 
-          <RouterLink to="/forward" class="btn btn--primary" rel="nofollow">Try It Now </RouterLink>
-        </aside>
+        <RouterLink to="/forward" class="btn btn--primary" rel="nofollow">Try It Now </RouterLink>
+      </aside>
 
-        <figure class="home__right" aria-hidden="true">
-          <div class="mockup">
-            <dev class="cardone L">
-              <img class="mockup__image " src="/src/assets/images/componets.svg" alt="TaskPlus mockup" />
-            </dev>
+      <figure class="home__right">
+        <section class="hero">
+          <!-- Top -->
+          <div class="hero-row hero-row-top">
+            <NoteCard class="hero-card" />
+
+            <div class="hero-text hero-text-right">
+              make<br />
+              a Note
+            </div>
           </div>
-        </figure>
-      </div>
-    </section>
+
+          <!-- Arrow -->
+          <img class="hero-arrow" src="/src/assets/images/Arrow 1.svg" alt="">
+
+          <!-- Bottom -->
+          <div class="hero-row hero-row-bottom">
+            <div class="hero-text hero-text-left">
+              make a<br />
+              Task for it
+            </div>
+
+            <TaskCard class="hero-card hero-card-task" />
+          </div>
+        </section>
+      </figure>
+
+    </div>
+  </section>
 </template>
 
 <style scoped>
-.R {
-  padding-left: 40px;
-}
 
-.L {
-  justify-content: end;
-}
-
-.S {
-  text-align: center;
-  color: black;
-  justify-items: center;
-  display: flex;
-  padding-right: 40px;
-  padding-bottom: 10px;
-  align-items: center;
-}
-
-.cardone {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 60px;
-}
 
 :root {
   --bg: #b9d3f6;
@@ -64,7 +63,8 @@
 
 .home {
   background: var(--bg);
-  padding: 28px 0;
+  justify-content: center;
+    display: flex;
 }
 
 html {
@@ -74,16 +74,11 @@ html {
 
 .home__container {
   max-width: 1200px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 520px;
   gap: 28px;
   align-items: center;
-}
-
-/* Left: hero text */
-.home__left {
-  padding: 12px 18px;
+  padding: 10px;
 }
 
 .home__title {
@@ -178,5 +173,56 @@ html {
     order: -1;
     justify-content: center;
   }
+}
+
+/* HERO FIX */
+.hero {
+  padding: 15px;
+  border-radius: 32px;
+  background-color: var(--white-color);
+  max-width: 720px;
+  width: 1000px;
+}
+
+/* Rows */
+.hero-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Card constraints */
+.hero-card {
+  max-width: 542px;
+  transform: scale(0.95);
+  transform-origin: left center;
+}
+
+.hero-card-task {
+  transform-origin: right center;
+}
+
+/* Text */
+.hero-text {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.hero-text-right {
+  margin-left: 24px;
+}
+
+.hero-text-left {
+  margin-right: 24px;
+}
+
+/* Arrow */
+.hero-arrow {
+  display: block;
+  margin-left: 166px;
+  width: 260px;
+  height: 120px;
 }
 </style>

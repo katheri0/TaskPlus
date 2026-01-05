@@ -7,7 +7,7 @@
           <li class="nav__item"><a class="nav__link" href="#Home">Home</a></li>
           <dev class="in-B">
           <li class="nav__item"><a class="nav__link" href="#features">Features</a></li>
-          <li class="nav__item"><a class="nav__link" href="#about-Us">About Us</a></li>
+          <li class="nav__item"><a class="nav__link" href="#about-Us">About</a></li>
           <li class="nav__item"><a class="nav__link" href="#developer">Developer</a></li>
           </dev>
         </ul>

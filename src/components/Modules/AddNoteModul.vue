@@ -10,7 +10,7 @@ let newNote = { status: "Unread", priorityStatus: "Med priority",  }
     <div class="add-note">
         <h3>Add a new note</h3>
         <br>
-        <label for="title">title*</label>
+        <span class="center"><label for="title">title*</label> <span class="red">Note: statues have  default values, toggle to change  </span></span>
         <input v-model="newNote.name" type="text" name="title" placeholder="Enter a title..."><br />
         <br>
         <label for="description">description*</label>
@@ -40,7 +40,7 @@ let newNote = { status: "Unread", priorityStatus: "Med priority",  }
 .add-note button {
     width: 247px;
     margin-top: 12px;
-    background-color: #375E9D;
+    background-color: #CBA900;
     color: white;
     font-size: 20px;
 }
@@ -49,5 +49,16 @@ let newNote = { status: "Unread", priorityStatus: "Med priority",  }
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.red
+{
+    color: #ff0000;
+    font-weight: 700;
+}
+.center
+{
+    display: flex;
+    justify-content: space-between;
 }
 </style>

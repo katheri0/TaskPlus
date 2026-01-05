@@ -46,7 +46,6 @@
 .cont
 {
     display: flex;
-    justify-content: end;
 }
 .High-priority {
     background-color: #D6D5FF;
@@ -64,7 +63,6 @@
     color: #FF3DE5;
     padding: 4px 10px;
     margin-left: 20px;
-
     border-radius: 10px;
     font-size: 14px;
     display: inline-block;
@@ -124,11 +122,11 @@
     background-color: var(--white-color);
     color: var(--black-color);
     padding: 20px;
-    border-radius: 12px;
+    border-radius: 24px;
     position: relative;
     width: 81%;
     min-height: 185px;
-    border: 2px solid black;
+    border: 1.5px solid black;
 
 
 }

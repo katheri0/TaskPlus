@@ -10,7 +10,7 @@ let newTask = { status: "Active", priorityStatus: "Med priority", completed: fal
     <div class="add-task">
         <h3>Add a new task</h3>
         <br>
-        <label for="title">title*</label>
+        <span class="center"><label for="title">title*</label> <span class="red">Note: statues have  default values, toggle to change  </span></span>
         <input v-model="newTask.name" type="text" name="title" placeholder="Enter a title..."><br />
         <br>
         <label for="description">description*</label>
@@ -49,5 +49,16 @@ let newTask = { status: "Active", priorityStatus: "Med priority", completed: fal
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.red
+{
+    color: #ff0000;
+    font-weight: 700;
+
+}
+.center
+{
+    display: flex;
+    justify-content: space-between;
 }
 </style>

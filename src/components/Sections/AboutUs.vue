@@ -4,7 +4,7 @@
 <template>
     <div  id="about-Us" class="warp">
         <div class="mockup">
-            <h1>About Us</h1>
+            <h1>About</h1>
 
             <dev class="cardone-right">
                 <img alt="TaskPlus mockup" src="/src/assets/images/about-logo.svg" class="mockup__image" />

@@ -160,11 +160,11 @@ span span {
     background-color: var(--white-color);
     color: var(--black-color);
     padding: 20px;
-    border-radius: 12px;
+    border-radius: 24px;
     position: relative;
     width: 600px;
     height: 170px;
-    border: 2px solid black;
+    border: 1.5px solid black;
 }
 
 .task h3 {
