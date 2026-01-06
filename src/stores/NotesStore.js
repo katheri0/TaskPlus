@@ -120,7 +120,7 @@ export const useNotesStore = defineStore("notes", () => {
             }
         })
     }
-    
+
     const editedNoteDescription = ref({
         noteId: null,
         description: "",
@@ -139,10 +139,18 @@ export const useNotesStore = defineStore("notes", () => {
             noteId,
             description: noteToEdit.description,
         };
-
         isEditing.value = true;
     }
 
+    function updateEditingNoteDescription() {
+        const { noteId, description } = editedNoteDescription.value;
+
+        const targetNote = notes.find(note => note.id === noteId);
+        if (!targetNote) return;
+
+        targetNote.description = description;
+        isEditing.value = false;
+    }
 
 
     // ---------- Helpers ----------
@@ -183,6 +191,7 @@ export const useNotesStore = defineStore("notes", () => {
         togglPriorityeStatus,
         startEditingNoteDescription,
         stopEditingNoteDescription,
+        updateEditingNoteDescription,
 
         // computed
         filteredNotes,

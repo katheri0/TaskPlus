@@ -30,19 +30,17 @@ const note = computed(() =>
     </h1>
     <div class="WR">
       <div class="imgs">
-        <img @click="notesStore.startEditingNoteDescription(note.id)" src="/src/assets/images/edit.svg" alt="edit" />
-        <img  @click="notesStore.stopEditingNoteDescription()" src="/src/assets/images/Book open.svg" alt="edit" />
-
+        <button class="btn" v-if="notesStore.isEditing" @click="notesStore.updateEditingNoteDescription()">Save</button>
+        <img v-if="!notesStore.isEditing" @click="notesStore.startEditingNoteDescription(note.id)" src="/src/assets/images/edit.svg" alt="edit" />
+        <img @click="notesStore.stopEditingNoteDescription()" src="/src/assets/images/Book open.svg" alt="book" />
       </div>
     </div>
     <article v-if="!notesStore.isEditing" class="note-content">
       {{ note.description }}
     </article>
     <article v-else>
-      <textarea v-model="notesStore.editedNoteDescription.description"   
-      @input="$event.target.style.height = 'auto';
-      $event.target.style.height = $event.target.scrollHeight + 'px';"
-           class="note-editor" />
+      <textarea v-model="notesStore.editedNoteDescription.description" @input="$event.target.style.height = 'auto';
+      $event.target.style.height = $event.target.scrollHeight + 'px';" class="note-editor" />
     </article>
   </section>
 
@@ -201,7 +199,7 @@ const note = computed(() =>
   padding: 16px;
   box-sizing: border-box;
   width: 100%;
-  
+
   /* Remove textarea "UI-ness" */
   border: none;
   outline: none;
@@ -212,5 +210,9 @@ const note = computed(() =>
   white-space: pre-wrap;
   overflow-wrap: break-word;
 }
-
+.btn
+{
+  cursor: pointer;
+  margin: 8px;
+}
 </style>
