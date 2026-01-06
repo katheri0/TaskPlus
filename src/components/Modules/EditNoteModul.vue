@@ -11,7 +11,7 @@ const notesStore = useNotesStore()
         <label for="title">title*</label>
         <input v-model="notesStore.editedNote.name" type="text" placeholder="Enter a title..."><br />
         <br>
-        <label for="description">description*</label>
+        <label for="description" >description*</label>
         <textarea  v-model="notesStore.editedNote.description" rows="4" placeholder="Enter a description..." /><br />
     <div class="btn-div">
       <button @click="notesStore.updateNote()" class="btn gray">

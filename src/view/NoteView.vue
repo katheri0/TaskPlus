@@ -15,8 +15,21 @@ const note = computed(() =>
 
 <template>
   <section v-if="note" class="note-view">
-    <h1 class="note-title">{{ note.name }}
+    <h1 class="note-title">
 
+      <span class="pointy-name" v-if="!notesStore.isInlineNameEditing" @dblclick="notesStore.startInlineNameEdit(note.id)">
+        {{ note.name }}
+      </span>
+    <input
+      v-else
+      v-model="notesStore.editedInlineName.name"
+      class="note-title-editor"
+      type="text"
+      @keydown.enter.prevent="notesStore.saveInlineName()"
+      @keydown.esc.prevent="notesStore.cancelInlineNameEdit()"
+      @blur="notesStore.saveInlineName()"
+      autofocus
+    />
       <span class="note-meta">
         <span @click=" notesStore.toggleStatus(note.id)" :class="notesStore.getStatusClass(note.status)">
           {{ note.status }}
@@ -31,7 +44,8 @@ const note = computed(() =>
     <div class="WR">
       <div class="imgs">
         <button class="btn" v-if="notesStore.isEditing" @click="notesStore.updateEditingNoteDescription()">Save</button>
-        <img v-if="!notesStore.isEditing" @click="notesStore.startEditingNoteDescription(note.id)" src="/src/assets/images/edit.svg" alt="edit" />
+        <img v-if="!notesStore.isEditing" @click="notesStore.startEditingNoteDescription(note.id)"
+          src="/src/assets/images/edit.svg" alt="edit" />
         <img @click="notesStore.stopEditingNoteDescription()" src="/src/assets/images/Book open.svg" alt="book" />
       </div>
     </div>
@@ -59,6 +73,8 @@ const note = computed(() =>
   background-color: var(--white-color);
   color: var(--black-color);
   border-radius: 16px;
+   margin-top: 25px;
+
 }
 
 .note-title {
@@ -210,9 +226,30 @@ const note = computed(() =>
   white-space: pre-wrap;
   overflow-wrap: break-word;
 }
-.btn
-{
+
+.btn {
   cursor: pointer;
   margin: 8px;
+}
+
+.note-title-editor {
+  font: inherit;
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 1.2;
+  width: 60%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0;
+  border-bottom: 2px solid #ddd;
+}
+
+.note-title-editor:focus {
+  border-bottom-color: #999;
+}
+.pointy-name
+{
+  cursor: pointer;
 }
 </style>

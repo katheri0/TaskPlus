@@ -120,7 +120,7 @@ export const useNotesStore = defineStore("notes", () => {
             }
         })
     }
-
+    // ---------- Inline Description editing ----------
     const editedNoteDescription = ref({
         noteId: null,
         description: "",
@@ -151,8 +151,37 @@ export const useNotesStore = defineStore("notes", () => {
         targetNote.description = description;
         isEditing.value = false;
     }
+    // ---------- Inline name editing ----------
+    const editedInlineName = ref({
+        noteId: null,
+        name: "",
+    });
+    const isInlineNameEditing = ref(false);
 
+    function startInlineNameEdit(noteId) {
+        const note = notes.find(note => note.id === noteId);
+        if (!note) return;
 
+        editedInlineName.value = {
+            noteId,
+            name: note.name,
+        };
+        isInlineNameEditing.value = true;
+    }
+
+    function cancelInlineNameEdit() {
+        isInlineNameEditing.value = false;
+    }
+    function saveInlineName() {
+        const { noteId, name } = editedInlineName.value;
+        const note = notes.find(note => note.id === noteId);
+        if (!note) return;
+
+        if (!name.trim()) return; // prevent empty title
+
+        note.name = name.trim();
+        isInlineNameEditing.value = false;
+    }
     // ---------- Helpers ----------
     function getPriorityClass(priorityText) {
         if (priorityText === "High priority") return "High-priority";
@@ -175,8 +204,12 @@ export const useNotesStore = defineStore("notes", () => {
         filterByReadingStatus,
         editedNote,
         editedNoteId,
+
         isEditing,
         editedNoteDescription,
+
+        editedInlineName,
+        isInlineNameEditing,
 
         // actions
         setFilterStatus,
@@ -189,12 +222,19 @@ export const useNotesStore = defineStore("notes", () => {
         getStatusClass,
         toggleStatus,
         togglPriorityeStatus,
+
+        // Description editing
         startEditingNoteDescription,
         stopEditingNoteDescription,
         updateEditingNoteDescription,
 
+        // name editing
+        startInlineNameEdit,
+        cancelInlineNameEdit,
+        saveInlineName,
+        
         // computed
         filteredNotes,
         getNoteById,
-    };
+        };
 });
