@@ -94,8 +94,8 @@
 }
 
 .Reading {
-    background-color: #d5ffd8;
-    color: #3dff4a;
+    background-color: #FFE299;
+    color: #FF7621;
     padding: 4px 10px;
     border-radius: 10px;
     font-size: 14px;

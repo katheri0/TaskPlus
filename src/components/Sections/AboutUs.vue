@@ -16,7 +16,7 @@
                     <br> 
                     <br>
                     this website was created by Katheri a front-end dev, this website is made with HTML CSS,JS &Vue.js
-                    (using localstorage)
+                    (and using localstorage)
                     </b>
                 </span>
             </dev>

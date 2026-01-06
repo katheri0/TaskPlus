@@ -120,6 +120,31 @@ export const useNotesStore = defineStore("notes", () => {
             }
         })
     }
+    
+    const editedNoteDescription = ref({
+        noteId: null,
+        description: "",
+    });
+    const isEditing = ref(false);
+
+    function stopEditingNoteDescription() {
+        isEditing.value = false;
+    }
+
+    function startEditingNoteDescription(noteId) {
+        const noteToEdit = notes.find(note => note.id === noteId);
+        if (!noteToEdit) return;
+
+        editedNoteDescription.value = {
+            noteId,
+            description: noteToEdit.description,
+        };
+
+        isEditing.value = true;
+    }
+
+
+
     // ---------- Helpers ----------
     function getPriorityClass(priorityText) {
         if (priorityText === "High priority") return "High-priority";
@@ -142,6 +167,8 @@ export const useNotesStore = defineStore("notes", () => {
         filterByReadingStatus,
         editedNote,
         editedNoteId,
+        isEditing,
+        editedNoteDescription,
 
         // actions
         setFilterStatus,
@@ -154,6 +181,8 @@ export const useNotesStore = defineStore("notes", () => {
         getStatusClass,
         toggleStatus,
         togglPriorityeStatus,
+        startEditingNoteDescription,
+        stopEditingNoteDescription,
 
         // computed
         filteredNotes,

@@ -56,7 +56,6 @@ import NoteCard from '../NoteCard.vue';
 
 :root {
   --bg: #b9d3f6;
-  --accent: #2f5fa0;
   --card: #fff;
   --muted: #222;
 }
@@ -131,7 +130,7 @@ html {
 }
 
 .btn--primary {
-  background: var(--accent);
+  background: #2f5fa0;
   color: #fff;
   box-shadow: 0 6px 0 rgba(0, 0, 0, 0.08);
 }

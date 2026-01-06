@@ -22,13 +22,27 @@ const note = computed(() =>
           {{ note.status }}
         </span>
 
-        <span @click=" notesStore.togglPriorityeStatus(note.id)"  :class="notesStore.getPriorityClass(note.priorityStatus)">
+        <span @click=" notesStore.togglPriorityeStatus(note.id)"
+          :class="notesStore.getPriorityClass(note.priorityStatus)">
           {{ note.priorityStatus }}
         </span>
       </span>
     </h1>
-    <article class="note-content">
+    <div class="WR">
+      <div class="imgs">
+        <img @click="notesStore.startEditingNoteDescription(note.id)" src="/src/assets/images/edit.svg" alt="edit" />
+        <img  @click="notesStore.stopEditingNoteDescription()" src="/src/assets/images/Book open.svg" alt="edit" />
+
+      </div>
+    </div>
+    <article v-if="!notesStore.isEditing" class="note-content">
       {{ note.description }}
+    </article>
+    <article v-else>
+      <textarea v-model="notesStore.editedNoteDescription.description"   
+      @input="$event.target.style.height = 'auto';
+      $event.target.style.height = $event.target.scrollHeight + 'px';"
+           class="note-editor" />
     </article>
   </section>
 
@@ -43,7 +57,6 @@ const note = computed(() =>
 
 .note-view {
   max-width: 100%;
-  height: 600px;
   padding: 32px 28px;
   background-color: var(--white-color);
   color: var(--black-color);
@@ -73,12 +86,15 @@ const note = computed(() =>
 }
 
 .note-content {
-  font-size: 18px;
-  line-height: 1.7;
   white-space: pre-wrap;
+  margin-top: 10px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #222;
+  padding: 16px;
 }
 
-/* ===== Reused chip styles (unchanged) ===== */
+/* ===== Reused chip styles  ===== */
 
 .High-priority {
   background-color: #D6D5FF;
@@ -142,4 +158,59 @@ const note = computed(() =>
   cursor: pointer;
 
 }
+
+.WR {
+  padding-right: 40px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: end;
+}
+
+.imgs {
+  display: flex;
+  gap: 12px;
+}
+
+.imgs img {
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.imgs img:hover {
+  background-color: #e6e6e6;
+}
+
+.imgs img:active {
+  background-color: #dcdcdc;
+  transform: scale(0.95);
+}
+
+.note-editor {
+  width: 100%;
+  min-height: 450px;
+
+  /* Typography parity */
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #222;
+
+  /* Layout parity */
+  padding: 16px;
+  box-sizing: border-box;
+  width: 100%;
+  
+  /* Remove textarea "UI-ness" */
+  border: none;
+  outline: none;
+  resize: vertical;
+  background: transparent;
+
+  /* Text behavior like article */
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
 </style>
