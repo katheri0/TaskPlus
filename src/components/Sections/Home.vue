@@ -219,6 +219,7 @@ html {
 
 /* Arrow */
 .hero-arrow {
+  scale: 1.09;
   display: block;
   margin-left: 166px;
   width: 260px;

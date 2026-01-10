@@ -1,4 +1,3 @@
-<!-- src/views/HeaderView.vue -->
 <template>
   <header class="header">
     <div class="header__inner">
@@ -13,7 +12,7 @@
         </ul>
       </nav>
       <div class="header__brand">
-        <img src="/src/assets/images/logo.svg" alt="TaskPlus logo" class="header__logo" />
+        <a href="#Home"><img src="/src/assets/images/logo.svg" alt="TaskPlus logo" class="header__logo" /></a>
       </div>
 
     </div>
@@ -21,8 +20,7 @@
 </template>
 
 <script setup>
-// Composition API not required for header state right now.
-// Kept as script setup for consistency.
+
 </script>
 
 <style scoped>

@@ -210,7 +210,7 @@ span {
 }
 
 .profileImage {
-    width: 92%;
+    width: 100%;
     border-radius: 50%;
 }
 

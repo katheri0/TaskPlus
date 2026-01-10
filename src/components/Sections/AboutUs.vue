@@ -10,13 +10,13 @@
                 <img alt="TaskPlus mockup" src="/src/assets/images/about-logo.svg" class="mockup__image" />
                 <span>
                     <b>
-                    TaskPlus is a website to manage your Notes &Tasks and order them based on Priority and Status
+                    TaskPlus is a website to manage your Notes &Tasks and order them based on  Statuses (Priority, Read, activeness)
                     <br>
                     <br>
                     <br> 
                     <br>
-                    this website was created by Katheri a front-end dev, this website is made with HTML CSS,JS &Vue.js
-                    (and using localstorage)
+                    this website was created by Katheri Saleh a front-end dev, this website is made with HTML CSS,JS &Vue.js
+                    (using localstorage to store the Notes/Tasks)
                     </b>
                 </span>
             </dev>

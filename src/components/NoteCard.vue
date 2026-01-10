@@ -4,49 +4,51 @@
 
 <template>
     <div class="cont">
-    <div class="note-card">
-        <h3>
-            <span>
-                Hosting & infrastructure
-            </span>
-
-            <span>
-                <span class=" Reading">
-                    <b>Reading</b>
+        <div class="note-card">
+            <h3>
+                <span>
+                    Hosting & infrastructure
                 </span>
 
-                <span class="High-priority">
-                    <b>High-priority</b>
+                <span>
+                    <span class=" Reading">
+                        <b>Reading</b>
+                    </span>
+
+                    <span class="High-priority">
+                        <b>High-priority</b>
+                    </span>
                 </span>
+            </h3>
+            <p>
+                Designing websites with Figma allows you to design attractive and interactive interfaces with ease.
+                Figma is
+                a free online platform, providing ready-made design templates and tools that help design prototypes and
+                final website design. You can use Fijma to create a variety of designs that suit your needs, whether
+                it's
+                for a personal or business website......
+            </p>
+
+            <span>
+                <button class="Delete-btn">
+                    <b>Delete</b>
+                </button>
+
+                <button class="Edit-btn">
+                    <b>Edit</b>
+                </button>
+                <b class="view-btn">
+                    <a>View</a>
+                </b>
             </span>
-        </h3>
-        <p>
-            Designing websites with Figma allows you to design attractive and interactive interfaces with ease. Figma is
-            a free online platform, providing ready-made design templates and tools that help design prototypes and
-            final website design. You can use Fijma to create a variety of designs that suit your needs, whether it's
-            for a personal or business website......
-        </p>
-
-        <span>
-            <button class="Delete-btn">
-                <b>Delete</b>
-            </button>
-
-            <button class="Edit-btn">
-                <b>Edit</b>
-            </button>
-            <b class="view-btn">
-                <a>View</a>
-            </b>
-        </span>
-    </div>
+        </div>
     </div>
 </template>
 <style scoped>
-.cont
-{
+.cont {
     display: flex;
 }
+
 .High-priority {
     background-color: #D6D5FF;
     color: #403DFF;

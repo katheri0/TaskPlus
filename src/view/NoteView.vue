@@ -113,9 +113,9 @@ const note = computed(() =>
 .High-priority {
   background-color: #D6D5FF;
   color: #403DFF;
-  padding: 4px 10px;
+  padding: 7px 10px;;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 17px;
   margin: 10px;
   cursor: pointer;
 }
@@ -123,9 +123,9 @@ const note = computed(() =>
 .Med-priority {
   background-color: #FFF4C8;
   color: #FFC23D;
-  padding: 4px 10px;
+  padding: 7px 10px;;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 17px;
   margin: 10px;
   cursor: pointer;
 
@@ -134,9 +134,9 @@ const note = computed(() =>
 .Low-priority {
   background-color: #FFD5D5;
   color: #FF3D3D;
-  padding: 4px 10px;
+  padding: 7px 10px;;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 17px;
   margin: 10px;
   cursor: pointer;
 
@@ -146,29 +146,29 @@ const note = computed(() =>
 .Unread {
   background-color: #FFD5D5;
   color: #FF3D3D;
-  padding: 4px 10px;
+  padding: 7px 10px;;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 17px;
   cursor: pointer;
 
 }
 
 .Reading {
-  background-color: #d5ffd8;
-  color: #3dff4a;
-  padding: 4px 10px;
+  background-color: #FFE299;
+  color: #FF7621;
+  padding: 7px 10px;;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 17px;
   cursor: pointer;
 
 }
 
 .Read {
-  background-color: #FFF4C8;
-  color: #FFC23D;
-  padding: 4px 10px;
+  background-color: #D5FFD8;
+  color: #3DFF4A;
+  padding: 7px 10px;;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 17px;
   cursor: pointer;
 
 }

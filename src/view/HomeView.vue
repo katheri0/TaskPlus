@@ -1,4 +1,3 @@
-<!-- src/views/HomeView.vue -->
 <script setup>
 import { RouterLink } from 'vue-router';
 import Header from '../components/Sections/Header.vue';

@@ -4,9 +4,9 @@
   <footer class="footer">
     <div class="footer__container">
 
-      <p class="footer__brand">© 2025 — <span class="footer__highlight">katheri / TaskPlus</span></p>
+      <p class="footer__brand">© 2026 — <span class="footer__highlight">katheri / TaskPlus</span></p>
       <nav class="footer__nav" aria-label="Footer links">
-        <a class="footer__link" href="#">GitHub</a>
+        <a class="footer__link" href="https://github.com/katheri0">GitHub</a>
         <a class="footer__link" href="#">LinkedIn</a>
         <a class="footer__link" href="#">Portfolio</a>
       </nav>
