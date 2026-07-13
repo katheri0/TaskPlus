@@ -1,6 +1,15 @@
 <script setup>
-import TaskCard from '../TaskCard.vue';
+import TaskCard from '@/components/Tasks/TaskCard.vue';
 import NoteCard from '../NoteCard.vue';
+
+const mockTask = {
+  id: 'mock-1',
+  name: 'Hosting & infrastructure',
+  description: 'Define hosting, domain and infrastructure for the portfolio website.',
+  status: 'Active',
+  priorityStatus: 'High priority',
+  completed: false,
+};
 </script>
 
 <template>
@@ -42,7 +51,7 @@ import NoteCard from '../NoteCard.vue';
               Task for it
             </div>
 
-            <TaskCard class="hero-card hero-card-task" />
+            <TaskCard :task="mockTask" class="hero-card hero-card-task" />
           </div>
         </section>
       </figure>

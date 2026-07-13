@@ -1,8 +1,21 @@
 <script setup>
-import { useTasksStore } from '@/stores/TasksStore';
 import { ref, computed } from 'vue';
-const taskStore = useTasksStore()
-const props = defineProps(['task'])
+
+const props = defineProps({
+  task: {
+    type: Object,
+    required: true,
+    default: () => ({})
+  }
+});
+
+const emit = defineEmits([
+  'toggleStatus',
+  'togglePriority',
+  'delete',
+  'edit',
+  'toggleCompleted'
+]);
 
 const SHOWFDes = ref(false);
 const togshowFdes = () => {
@@ -10,13 +23,25 @@ const togshowFdes = () => {
 }
 
 const truncatedDes = computed(() => {
-  let description = props.task.description;
+  let description = props.task.description || '';
   if (!SHOWFDes.value) {
-    description = description.substring(0, 90) + "...";
+    description = description.substring(0, 90) + (description.length > 90 ? "..." : "");
   }
   return description;
 })
 
+function getStatusClassPriority(statusText) {
+  if (statusText === 'High priority') return 'High-priority'
+  if (statusText === 'Med priority') return 'Med-priority'
+  if (statusText === 'Low priority') return 'Low-priority'
+  return ''
+}
+
+function getStatusClass(statusText) {
+  if (statusText === 'Active') return 'Active'
+  if (statusText === 'Inactive') return 'Inactive'
+  return ''
+}
 </script>
 
 <template>
@@ -24,10 +49,10 @@ const truncatedDes = computed(() => {
     <h3>
       <span>{{ task.name }} </span>
       <span>
-        <span @click="taskStore.toggleStatus(task.id)" :class="taskStore.getStatusClass(task.status)"><b>{{ task.status
+        <span @click="emit('toggleStatus', task.id)" :class="getStatusClass(task.status)"><b>{{ task.status
             }}</b></span>
-        <span @click="taskStore.togglPriorityeStatus(task.id)"
-          :class="taskStore.getStatusClassPriority(task.priorityStatus)"><b>{{ task.priorityStatus }}</b></span>
+        <span @click="emit('togglePriority', task.id)"
+          :class="getStatusClassPriority(task.priorityStatus)"><b>{{ task.priorityStatus }}</b></span>
       </span>
     </h3>
     <p >
@@ -39,12 +64,12 @@ const truncatedDes = computed(() => {
 
 
     <span>
-      <button @click="taskStore.deleteTask(task.id)" class="Delete-btn"><b>Delete</b></button>
+      <button @click="emit('delete', task.id)" class="Delete-btn"><b>Delete</b></button>
 
-      <button @click="taskStore.startEditTask(task.id)" class="Edit-btn"><b>Edit</b></button>
+      <button @click="emit('edit', task.id)" class="Edit-btn"><b>Edit</b></button>
     </span>
     <div class="task-check">
-      <input @click="taskStore.toggleCompleted(task.id)" type="checkbox" :checked="task.completed" />
+      <input @click="emit('toggleCompleted', task.id)" type="checkbox" :checked="task.completed" />
       <label>
         {{ task.completed ? "Done" : "To-Do" }}
       </label>

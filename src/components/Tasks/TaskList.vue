@@ -30,7 +30,13 @@ const ModulStore = useModulStore();
       { label: 'Done', value: 'Done' }
     ]" :on-select="taskStore.setFilter" :on-clear="() => taskStore.setFilter('')" />
     <div class="tasks">
-      <taskCard v-for="(task, index) in taskStore.filteredTasks" :key="index" :task="task" />
+      <taskCard v-for="(task, index) in taskStore.filteredTasks" :key="index" :task="task" 
+        @toggle-status="taskStore.toggleStatus"
+        @toggle-priority="taskStore.togglPriorityeStatus"
+        @delete="taskStore.deleteTask"
+        @edit="taskStore.startEditTask"
+        @toggle-completed="taskStore.toggleCompleted"
+      />
     </div>
 
 
