@@ -204,12 +204,15 @@ html {
   max-width: 542px;
   transform: scale(0.95);
   transform-origin: left center;
+  border: 1.5px solid black !important;
+
 }
 
 .hero-card-task {
   transform-origin: right center;
-}
+  border: 1.5px solid black !important;
 
+}
 /* Text */
 .hero-text {
   font-size: 40px;
