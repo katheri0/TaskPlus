@@ -19,8 +19,8 @@
 
 
 .footer{
-  color: #ffffff;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  color: var(--text-dark);
+  border-top: 1px solid rgba(0,0,0,0.1);
   padding: 20px 16px;
   box-sizing: border-box;
   -webkit-font-smoothing:antialiased;
@@ -55,19 +55,26 @@
 }
 
 .footer__link{
-  color: rgba(255,255,255,0.85);
+  color: var(--text-dark);
+  opacity: 0.85;
   text-decoration: none;
   font-weight: 600;
   font-style: italic;
   font-size: 16px;
   padding: 6px 8px;
+  border-radius: 4px;
 }
 
 .footer__link:hover,
 .footer__link:focus{
   text-decoration: underline;
-  color: var(--text);
+  opacity: 1;
   outline: none;
+}
+
+.footer__link:focus-visible{
+  outline: 2px solid var(--text-dark);
+  outline-offset: 2px;
 }
 
 @media (max-width: 640px){

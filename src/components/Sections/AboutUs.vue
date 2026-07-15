@@ -6,20 +6,20 @@
         <div class="mockup">
             <h1>About</h1>
 
-            <dev class="cardone-right">
+            <div class="cardone-right">
                 <img alt="TaskPlus mockup" src="/src/assets/images/about-logo.svg" class="mockup__image" />
                 <span>
                     <b>
-                    TaskPlus is a website to manage your Notes &Tasks and order them based on  Statuses (Priority, Read, activeness)
+                    TaskPlus is a website to manage your Notes & Tasks and order them based on Statuses (Priority, Read, activeness)
                     <br>
                     <br>
                     <br> 
                     <br>
-                    this website was created by Katheri Saleh a front-end dev, this website is made with HTML CSS,JS &Vue.js
+                    This website was created by Katheri Saleh a front-end dev, this website is made with HTML CSS, JS & Vue.js
                     (using localstorage to store the Notes/Tasks)
                     </b>
                 </span>
-            </dev>
+            </div>
         </div>
     </div>
 </template>
@@ -42,8 +42,9 @@ html {
 
 .mockup {
     margin: 20px;
-    height: 550px;
-    width: 950px;
+    min-height: 550px;
+    width: 100%;
+    max-width: 950px;
     background: white;
     padding: 18px;
     border-radius: 16px;

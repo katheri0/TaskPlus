@@ -4,6 +4,12 @@
   --gray-color: #dddddd;
   --white-color: #ffffff;
   --black-color: #000000;
+  
+  /* Additional tokens mapped from component redesigns */
+  --bg-color: #b9d3f6;
+  --accent-color: #587fb8;
+  --text-dark: #222222;
+  --container-max: 1200px;
 }
 
 body {

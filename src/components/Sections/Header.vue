@@ -4,11 +4,9 @@
       <nav class="header__nav" aria-label="Main navigation">
         <ul class="nav__list">
           <li class="nav__item"><a class="nav__link" href="#Home">Home</a></li>
-          <dev class="in-B">
           <li class="nav__item"><a class="nav__link" href="#features">Features</a></li>
           <li class="nav__item"><a class="nav__link" href="#about-Us">About</a></li>
           <li class="nav__item"><a class="nav__link" href="#developer">Developer</a></li>
-          </dev>
         </ul>
       </nav>
       <div class="header__brand">
@@ -24,12 +22,7 @@
 </script>
 
 <style scoped>
-:root {
-  --bg: #b9d3f6;
-  --accent: #587fb8;
-  --card: #fff;
-  --muted: #333;
-}
+
 
 /* Header */
 .header {
@@ -38,46 +31,58 @@
 }
 
 .header__inner {
-  max-width: 1200px;
+  max-width: var(--container-max);
   margin: 0 auto;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
 }
 
 .header__logo {
-  scale: 2;
-  width: 56px;
-  height: 56px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   border-radius: 999px;
-  background: var(--card);
-  padding: 6px;
+  background: var(--white-color);
+  padding: 8px;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.header__logo:hover {
+  transform: scale(1.05);
 }
 
 .nav__list {
   display: flex;
-  gap: 105px;
+  flex-wrap: wrap;
+  gap: 2rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.in-B
-{
-  display: flex;
-  gap: 90px;
-}
 .nav__link {
   display: inline-block;
-  padding: 8px 34px;
+  padding: 8px 24px;
   border-radius: 8px;
   text-decoration: none;
-  color: #fff;
-  background: #375E9D;
+  color: var(--white-color);
+  background: var(--accent-color);
   box-shadow: 0 3px 0 rgba(0, 0, 0, 0.06);
   font-weight: 600;
   font-size: 14px;
+  transition: opacity 0.2s ease, outline 0.2s ease;
+}
+
+.nav__link:hover {
+  opacity: 0.9;
+}
+
+.nav__link:focus-visible {
+  outline: 3px solid var(--text-dark);
+  outline-offset: 2px;
 }
 
 /* Responsive */

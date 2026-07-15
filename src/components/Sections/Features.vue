@@ -17,8 +17,9 @@ h1 {
 
 .mockup {
     margin: 20px;
-    height: 675px;
-    width: 950px;
+    min-height: 675px;
+    width: 100%;
+    max-width: 950px;
     background: white;
     padding: 18px;
     border-radius: 16px;
