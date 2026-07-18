@@ -2,32 +2,16 @@
 import featurecomponent from '../featureComponent.vue';
 </script>
 <template>
-    <div id="features" class="warp">
-        <div class="mockup">
-            <featurecomponent />
-        </div>
+  <section id="features" class="py-24 bg-white">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold tracking-tight text-zinc-900">Everything you need</h2>
+        <p class="mt-4 text-lg text-zinc-500 font-medium">Built for speed, designed for clarity.</p>
+      </div>
+      
+      <div class="bg-[#fafafa] rounded-[2.5rem] border border-zinc-100 p-8 sm:p-12 shadow-sm">
+         <featurecomponent />
+      </div>
     </div>
+  </section>
 </template>
-
-<style scoped>
-h1 {
-    text-align: center;
-    color: black;
-}
-
-.mockup {
-    margin: 20px;
-    min-height: 675px;
-    width: 100%;
-    max-width: 950px;
-    background: white;
-    padding: 18px;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-}
-
-.warp {
-    display: flex;
-    justify-content: center;
-}
-</style>

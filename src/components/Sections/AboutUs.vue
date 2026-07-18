@@ -1,74 +1,13 @@
-<script setup>
-
-</script>
 <template>
-    <div  id="about-Us" class="warp">
-        <div class="mockup">
-            <h1>About</h1>
-
-            <div class="cardone-right">
-                <img alt="TaskPlus mockup" src="/src/assets/images/about-logo.svg" class="mockup__image" />
-                <span>
-                    <b>
-                    TaskPlus is a website to manage your Notes & Tasks and order them based on Statuses (Priority, Read, activeness)
-                    <br>
-                    <br>
-                    <br> 
-                    <br>
-                    This website was created by Katheri Saleh a front-end dev, this website is made with HTML CSS, JS & Vue.js
-                    (using localstorage to store the Notes/Tasks)
-                    </b>
-                </span>
-            </div>
-        </div>
+  <section id="about-Us" class="py-32 bg-[#fafafa]">
+    <div class="max-w-4xl mx-auto px-6 flex flex-col items-center text-center">
+      <div class="w-16 h-16 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center shadow-sm mb-8">
+        <svg class="w-8 h-8 text-zinc-900" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+      </div>
+      <h2 class="text-4xl font-bold tracking-tight text-zinc-900 mb-6">About TaskPlus</h2>
+      <p class="text-lg sm:text-xl text-zinc-500 leading-relaxed max-w-2xl font-medium">
+        TaskPlus is designed to remove friction from your workflow. Built entirely in the browser using local storage, you never have to sign up or log in. Your notes and tasks are instantly available, beautifully organized, and perfectly prioritized.
+      </p>
     </div>
+  </section>
 </template>
-
-<style scoped>
-h1 {
-    text-align: center;
-    color: black;
-}
-
-span {
-    padding: 15px;
-    color: black;
-    font-size: 24px;
-}
-html {
-  scroll-behavior: smooth;
-}
-
-
-.mockup {
-    margin: 20px;
-    min-height: 550px;
-    width: 100%;
-    max-width: 950px;
-    background: white;
-    padding: 18px;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-}
-
-.mockup__image {
-    width: 42%;
-    height: auto;
-    display: block;
-    border-radius: 8px;
-    padding: 10px;
-}
-
-.cardone-right {
-    display: flex;
-    justify-content: start;
-    padding-top: 5%;
-
-}
-
-.warp {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-</style>

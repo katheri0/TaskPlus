@@ -1,240 +1,35 @@
-<script setup>
-import TaskCard from '@/components/Tasks/TaskCard.vue';
-import NoteCard from '../NoteCard.vue';
-
-const mockTask = {
-  id: 'mock-1',
-  name: 'Hosting & infrastructure',
-  description: 'Define hosting, domain and infrastructure for the portfolio website.',
-  status: 'Active',
-  priorityStatus: 'High priority',
-  completed: false,
-};
-</script>
-
 <template>
-  <section class="home">
-    <div class="home__container">
-      <aside class="home__left">
-        <h1 class="home__title">
-          Level Up<br />
-          <span class="home__with">With</span><br />
-          <span class="home__brand">TaskPlus</span>
-        </h1>
+  <section id="Home" class="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-[#fafafa]">
+    <!-- Ambient glowing backgrounds -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden flex justify-center items-center">
+      <div class="w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-blue-100/40 rounded-full blur-[120px] mix-blend-multiply absolute top-[-10%] left-[-10%]"></div>
+      <div class="w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] bg-emerald-100/30 rounded-full blur-[120px] mix-blend-multiply absolute bottom-[-10%] right-[-10%]"></div>
+    </div>
 
-        <p class="home__subtitle">Task/Note Manager</p>
+    <div class="relative z-10 w-full max-w-5xl mx-auto px-6 pt-32 pb-20 flex flex-col items-center text-center">
+      <!-- Badge -->
+      <div class="mb-8 inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-200 bg-white/60 backdrop-blur-sm text-xs font-semibold text-zinc-600 shadow-sm">
+        <span class="flex h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></span>
+        No Signup Required
+      </div>
 
-        <p class="home__note">No Signup / Login — straight to work</p>
+      <h1 class="text-5xl sm:text-7xl lg:text-[5.5rem] font-bold tracking-tighter text-zinc-900 leading-[1.05] max-w-4xl">
+        Make a Note.<br>
+        <span class="text-zinc-400">Segment it into Tasks.</span>
+      </h1>
+      
+      <p class="mt-8 text-lg sm:text-xl text-zinc-500 max-w-2xl mx-auto font-medium leading-relaxed">
+        TaskPlus is a lightning-fast, zero-friction workflow manager. Stop wasting time configuring and get straight to work, right in your browser.
+      </p>
 
-        <RouterLink to="/forward" class="btn btn--primary" rel="nofollow">Try It Now </RouterLink>
-      </aside>
-
-      <figure class="home__right">
-        <section class="hero">
-          <!-- Top -->
-          <div class="hero-row hero-row-top">
-            <NoteCard class="hero-card" />
-
-            <div class="hero-text hero-text-right">
-              make<br />
-              a Note
-            </div>
-          </div>
-
-          <!-- Arrow -->
-          <img class="hero-arrow" src="/src/assets/images/Arrow 1.svg" alt="">
-
-          <!-- Bottom -->
-          <div class="hero-row hero-row-bottom">
-            <div class="hero-text hero-text-left">
-              make a<br />
-              Task for it
-            </div>
-
-            <TaskCard :task="mockTask" class="hero-card hero-card-task" />
-          </div>
-        </section>
-      </figure>
-
+      <div class="mt-10">
+        <RouterLink to="/forward" class="inline-flex items-center justify-center px-8 py-3.5 text-sm font-semibold rounded-full text-white bg-zinc-900 hover:bg-zinc-800 transition-all duration-200 active:scale-[0.98] shadow-lg shadow-zinc-900/20 outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2">
+          Start Managing
+        </RouterLink>
+      </div>
     </div>
   </section>
 </template>
 
-<style scoped>
-
-
-:root {
-  --bg: #b9d3f6;
-  --card: #fff;
-  --muted: #222;
-}
-
-.home {
-  background: var(--bg);
-  justify-content: center;
-    display: flex;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-
-.home__container {
-  max-width: 1200px;
-  display: grid;
-  grid-template-columns: 1fr 520px;
-  gap: 28px;
-  align-items: center;
-  padding: 10px;
-}
-
-.home__title {
-  font-size: 46px;
-  line-height: 1.02;
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0 0 12px;
-  mix-blend-mode: normal;
-  text-shadow: 0 1px rgba(0, 0, 0, 0.02);
-}
-
-.home__with {
-  font-weight: 500;
-  display: block;
-  font-size: 36px;
-  color: #fff;
-}
-
-.home__brand {
-  display: inline-block;
-  font-weight: 800;
-  font-size: 48px;
-  color: var(--card);
-  padding: 6px 10px;
-  border-radius: 6px;
-  margin-top: 6px;
-}
-
-.home__subtitle {
-  color: rgba(255, 255, 255, 0.95);
-  font-weight: 600;
-  margin: 12px 0;
-  font-size: 42px;
-}
-
-.home__note {
-  margin: 18px 0;
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 600;
-}
-
-/* CTA */
-.btn {
-  display: inline-block;
-  padding: 10px 18px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 700;
-}
-
-.btn--primary {
-  background: #2f5fa0;
-  color: #fff;
-  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.08);
-}
-
-/* Right: mockup */
-.mockup {
-  height: 470px;
-  width: 650px;
-  background: white;
-  padding: 18px;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-}
-
-.mockup__image {
-  scale: 1.4;
-  width: 70%;
-  height: auto;
-  display: block;
-  border-radius: 8px;
-}
-
-/* Responsive */
-@media (max-width: 980px) {
-  .home__container {
-    grid-template-columns: 1fr;
-    padding: 0 18px;
-  }
-
-  .home__title {
-    font-size: 36px;
-  }
-
-  .home__brand {
-    font-size: 36px;
-  }
-
-  .mockup {
-    order: -1;
-    justify-content: center;
-  }
-}
-
-/* HERO FIX */
-.hero {
-  padding: 15px;
-  border-radius: 32px;
-  background-color: var(--white-color);
-  max-width: 720px;
-  width: 1000px;
-}
-
-/* Rows */
-.hero-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Card constraints */
-.hero-card {
-  max-width: 542px;
-  transform: scale(0.95);
-  transform-origin: left center;
-  border: 1.5px solid black !important;
-
-}
-
-.hero-card-task {
-  transform-origin: right center;
-  border: 1.5px solid black !important;
-
-}
-/* Text */
-.hero-text {
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 1.1;
-  white-space: nowrap;
-}
-
-.hero-text-right {
-  margin-left: 24px;
-}
-
-.hero-text-left {
-  margin-right: 24px;
-}
-
-/* Arrow */
-.hero-arrow {
-  scale: 1.09;
-  display: block;
-  margin-left: 166px;
-  width: 260px;
-  height: 120px;
-}
-</style>
+<script setup>
+</script>
