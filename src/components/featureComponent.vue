@@ -66,9 +66,11 @@
 <style scoped>
 /* Layout */
 .feature-overview {
+    width: 100%;
     max-width: 1100px;
     margin: 0 auto;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    text-align: center;
 }
 
 .feature-title {
@@ -83,10 +85,13 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 2rem;
+    justify-items: center;
 }
 
 /* Card */
 .feature-card {
+    width: 100%;
+    max-width: 320px;
     background-color: #ffffff;
     border-radius: 14px;
     padding: 1.8rem 1.4rem;
@@ -98,6 +103,7 @@
 .status-group {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 0.2rem;
 }
 
@@ -163,7 +169,8 @@
     padding: 2rem;
     text-align: center;
     box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.13);
-    width: 700px;
+    width: 100%;
+    max-width: 700px;
 }
 
 .status-interconnected {
@@ -193,5 +200,6 @@
 .feat-cen {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 </style>

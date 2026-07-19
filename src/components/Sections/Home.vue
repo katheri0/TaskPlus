@@ -8,7 +8,7 @@
 
     <div class="relative z-10 w-full max-w-5xl mx-auto px-6 pt-32 pb-20 flex flex-col items-center text-center">
       <!-- Badge -->
-      <div class="mb-8 inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-200 bg-white/60 backdrop-blur-sm text-xs font-semibold text-zinc-600 shadow-sm">
+      <div class="mb-8 inline-flex items-center gap-3 px-7 py-3 rounded-full border border-zinc-200 bg-white/60 backdrop-blur-sm text-xs font-semibold text-zinc-600 shadow-sm">
         <span class="flex h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></span>
         No Signup Required
       </div>
@@ -23,7 +23,7 @@
       </p>
 
       <div class="mt-10">
-        <RouterLink to="/forward" class="inline-flex items-center justify-center px-8 py-3.5 text-sm font-semibold rounded-full text-white bg-zinc-900 hover:bg-zinc-800 transition-all duration-200 active:scale-[0.98] shadow-lg shadow-zinc-900/20 outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2">
+        <RouterLink to="/forward" class="inline-flex items-center justify-center px-10 py-4 text-sm font-semibold rounded-full text-white bg-zinc-900 hover:bg-zinc-800 transition-all duration-200 active:scale-[0.98] shadow-lg shadow-zinc-900/20 outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2">
           Start Managing
         </RouterLink>
       </div>
