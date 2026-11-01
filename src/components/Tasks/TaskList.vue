@@ -4,7 +4,7 @@ import Filter from '@/components/Filter.vue';
 import ModulWindow from '@/components/Modules/ModulWindow.vue';
 import AddTaskModul from '@/components/Modules/AddTaskModul.vue';
 import EditTaskModul from '@/components/Modules/EditTaskModul.vue';
-import SwitchBtn from '@/components/SwitchBtn.vue';
+import SwitchBtn from '@/components/switchBtn.vue';
 import { useModulStore } from '@/stores/ModulStore';
 import { useTasksStore } from '@/stores/TasksStore';
 const taskStore = useTasksStore();

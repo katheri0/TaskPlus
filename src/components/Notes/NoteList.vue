@@ -6,7 +6,8 @@ import EditNoteModul from '@/components/Modules/EditNoteModul.vue';
 import { useModulStore } from '@/stores/ModulStore';
 import { useNotesStore } from '@/stores/NotesStore';
 import AddNoteModul from '@/components/Modules/AddNoteModul.vue';
-import SwitchBtn from '@/components/SwitchBtn.vue';
+import SwitchBtn from '@/components/switchBtn.vue';
+
 const notesStore = useNotesStore();
 const modalStore = useModulStore();
 </script>
